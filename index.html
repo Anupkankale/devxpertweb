@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DevXpert Labs · The Experimental Arm of Anup Kankale</title>
+<meta name="description" content="DevXpert Labs is the experimental arm of Anup Kankale, a WordPress developer in Mumbai, where freelance client projects and curiosity-driven experiments in WordPress, plugins and AI get built side by side." />
+<meta name="author" content="Anup Kankale" />
+<meta name="theme-color" content="#0B0C0F" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="DevXpert Labs" />
+<meta property="og:title" content="DevXpert Labs · The Experimental Arm of Anup Kankale" />
+<meta property="og:description" content="The experimental arm of Anup Kankale, where freelance client work and curiosity-driven experiments share one workbench." />
+<meta property="og:url" content="https://devxpertlabs.com" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --ink:#0B0C0F;
+    --panel:#141518;
+    --editor:#0F1013;
+    --line:#26272E;
+    --line-soft:#1B1C22;
+    --text:#EDEEF2;
+    --muted:#9096A3;
+    --wp:#5E17EB;
+    --wp-soft:#A98BFF;
+    --filament:#FABF28;
+    --active:#45D48A;
+
+    /* code syntax */
+    --c-tag:#FF7B72;
+    --c-comment:#6E7787;
+    --c-doc:#6E7787;
+    --c-key:#A98BFF;
+    --c-str:#7EE0A6;
+
+    --display:"Space Grotesk", system-ui, sans-serif;
+    --body:"IBM Plex Sans", system-ui, sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, monospace;
+
+    --wrap:1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;}
+
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px;}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--wp-soft);
+    display:inline-flex;
+    align-items:center;
+    gap:.6em;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(10px);
+    background:rgba(11,12,15,.8);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    height:66px;
+  }
+  .brand{
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:.95rem;
+    letter-spacing:.02em;
+    display:flex;align-items:center;gap:.55em;
+  }
+  .brand .bracket{color:var(--wp-soft);}
+  .brand .dot{
+    width:8px;height:8px;border-radius:2px;background:var(--active);
+    box-shadow:0 0 10px var(--active);
+    display:inline-block;
+  }
+  nav.links{display:flex;gap:30px;align-items:center;}
+  nav.links a{
+    font-size:.9rem;color:var(--muted);
+    transition:color .2s ease;
+  }
+  nav.links a:hover{color:var(--text);}
+  .nav-cta{
+    font-family:var(--mono);
+    font-size:.8rem;
+    border:1px solid var(--line);
+    padding:9px 16px;border-radius:8px;
+    color:var(--text);
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .nav-cta:hover{border-color:var(--wp);background:rgba(94,23,235,.15);}
+  .menu-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 0 72px;}
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:56px;align-items:center;
+  }
+  h1{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(2.3rem,5.4vw,4.1rem);
+    line-height:1.04;
+    letter-spacing:-.02em;
+    margin:22px 0 0;
+  }
+  h1 em{
+    font-style:normal;
+    color:var(--wp-soft);
+  }
+  .hero p.lead{
+    color:var(--muted);
+    font-size:1.08rem;
+    max-width:34ch;
+    margin:22px 0 0;
+  }
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;}
+  .btn{
+    font-family:var(--mono);
+    font-size:.85rem;
+    padding:13px 22px;border-radius:10px;
+    display:inline-flex;align-items:center;gap:.6em;
+    transition:transform .15s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn-primary{background:var(--wp);color:#fff;border:1px solid var(--wp);}
+  .btn-primary:hover{transform:translateY(-2px);background:#6D21F0;}
+  .btn-ghost{border:1px solid var(--line);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--wp-soft);transform:translateY(-2px);}
+
+  /* signature: plugin header card */
+  .plugin-card{
+    background:var(--editor);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,.75);
+  }
+  .plugin-row{
+    display:flex;align-items:center;gap:14px;
+    padding:14px 18px;
+    border-bottom:1px solid var(--line-soft);
+    background:rgba(94,23,235,.09);
+  }
+  .plugin-row .name{
+    font-family:var(--display);font-weight:600;font-size:1rem;
+    flex:1;
+  }
+  .plugin-row .name small{
+    display:block;font-family:var(--body);font-weight:400;
+    color:var(--muted);font-size:.78rem;
+  }
+  .status{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--active);
+    display:flex;align-items:center;gap:.5em;
+  }
+  .status .led{
+    width:8px;height:8px;border-radius:50%;background:var(--active);
+    box-shadow:0 0 10px var(--active);
+  }
+  /* toggle */
+  .toggle{
+    width:44px;height:24px;border-radius:20px;
+    background:var(--wp);border:none;cursor:pointer;
+    position:relative;padding:0;flex-shrink:0;
+    transition:background .25s ease;
+  }
+  .toggle::after{
+    content:"";position:absolute;top:3px;left:3px;
+    width:18px;height:18px;border-radius:50%;background:#fff;
+    transition:transform .25s ease;
+  }
+  .plugin-card.off .toggle{background:#2A2C34;}
+  .plugin-card.off .toggle::after{transform:translateX(20px);}
+  .plugin-card.off .status{color:var(--muted);}
+  .plugin-card.off .status .led{background:var(--muted);box-shadow:none;}
+  .plugin-card.off .code{opacity:.4;filter:saturate(.4);}
+
+  .code{
+    font-family:var(--mono);
+    font-size:.82rem;
+    line-height:1.85;
+    padding:20px 22px 24px;
+    transition:opacity .3s ease, filter .3s ease;
+    overflow-x:auto;
+  }
+  .code .ln{display:block;white-space:pre;}
+  .cd-tag{color:var(--c-tag);}
+  .cd-com{color:var(--c-comment);}
+  .cd-doc{color:var(--c-doc);}
+  .cd-key{color:var(--c-key);}
+  .cd-str{color:var(--c-str);}
+  .caption{
+    padding:0 22px 18px;
+    font-family:var(--mono);font-size:.7rem;color:var(--muted);
+    border-top:1px solid var(--line-soft);padding-top:14px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  }
+
+  /* reveal animation for code lines */
+  .code .ln{opacity:0;transform:translateY(4px);}
+  .reveal .code .ln{animation:lineIn .4s ease forwards;}
+  @keyframes lineIn{to{opacity:1;transform:none;}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:80px 0;}
+  .sec-head{max-width:52ch;margin-bottom:44px;}
+  .sec-head h2{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(1.7rem,3.2vw,2.5rem);
+    letter-spacing:-.015em;line-height:1.1;margin:16px 0 0;
+  }
+  .sec-head p{color:var(--muted);margin:14px 0 0;font-size:1.03rem;}
+
+  /* ---------- BLOCKS GRID ---------- */
+  .blocks{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:1px;
+    background:var(--line-soft);
+    border:1px solid var(--line-soft);
+    border-radius:14px;overflow:hidden;
+  }
+  .block{
+    background:var(--panel);
+    padding:30px 26px 34px;
+    position:relative;
+    transition:background .2s ease;
+  }
+  .block:hover{background:#17181D;}
+  .block .idx{
+    font-family:var(--mono);font-size:.72rem;color:var(--wp-soft);
+    letter-spacing:.1em;
+  }
+  .block h3{
+    font-family:var(--display);font-weight:500;font-size:1.15rem;
+    margin:14px 0 8px;
+  }
+  .block p{color:var(--muted);font-size:.94rem;margin:0;}
+  .block .handle{
+    position:absolute;top:16px;right:16px;
+    font-family:var(--mono);font-size:.7rem;color:var(--muted);
+    opacity:0;transform:translateY(-4px);
+    transition:opacity .2s ease, transform .2s ease;
+    border:1px solid var(--line);border-radius:6px;padding:2px 7px;
+  }
+  .block:hover .handle{opacity:1;transform:none;}
+
+  /* ---------- GIVING BACK ---------- */
+  .give-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
+  .give{
+    position:relative;
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:28px 26px 26px;display:flex;flex-direction:column;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .give:hover{border-color:var(--wp);transform:translateY(-3px);}
+  .give .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;}
+  .give .kicker{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--wp-soft);}
+  .give .pill{
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
+    border-radius:20px;padding:5px 11px;white-space:nowrap;
+  }
+  .give .pill.core{background:var(--wp);color:#fff;}
+  .give .pill.live{background:var(--filament);color:#0B0C0F;}
+  .give .pill.oss{border:1px solid var(--line);color:var(--muted);}
+  .give h3{font-family:var(--display);font-weight:600;font-size:1.22rem;line-height:1.2;margin:0 0 8px;}
+  .give p{color:var(--muted);font-size:.94rem;margin:0 0 22px;flex:1;}
+  .give .link{font-family:var(--mono);font-size:.78rem;color:var(--wp-soft);display:inline-flex;align-items:center;gap:.5em;}
+  .give .link svg{width:14px;height:14px;}
+  .give-note{
+    margin-top:24px;font-family:var(--body);font-size:1rem;color:var(--muted);
+    max-width:64ch;
+  }
+  .give-note b{color:var(--filament);font-weight:500;}
+
+  /* ---------- TWO TRACKS ---------- */
+  .tracks{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .track{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;padding:34px 32px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .track:hover{border-color:var(--wp);transform:translateY(-3px);}
+  .track .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--filament);}
+  .track.exp .k{color:var(--wp-soft);}
+  .track h3{font-family:var(--display);font-weight:600;font-size:1.35rem;margin:14px 0 10px;line-height:1.15;}
+  .track p{color:var(--muted);font-size:.98rem;margin:0;}
+  @media (max-width:860px){ .tracks{grid-template-columns:1fr;} }
+
+  /* ---------- WORKBENCH / PROJECTS ---------- */
+  .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+  .proj{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:28px 26px;
+    display:flex;flex-direction:column;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .proj:hover{border-color:var(--wp);transform:translateY(-3px);}
+  .proj .tag{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--filament);
+  }
+  .proj h3{font-family:var(--display);font-weight:600;font-size:1.3rem;margin:14px 0 10px;}
+  .proj p{color:var(--muted);font-size:.96rem;margin:0 0 22px;flex:1;}
+  .proj .link{
+    font-family:var(--mono);font-size:.8rem;color:var(--wp-soft);
+    display:inline-flex;align-items:center;gap:.5em;
+  }
+  .proj .link svg{width:14px;height:14px;}
+  .proj.slot{
+    border-style:dashed;border-color:var(--line);
+    background:transparent;
+  }
+  .proj.slot h3,.proj.slot .tag{color:var(--muted);}
+  .proj.slot:hover{border-color:var(--wp-soft);transform:none;}
+
+  /* ---------- WHY / MOTIVATION ---------- */
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .why-lead p{color:var(--muted);margin:16px 0 0;font-size:1.03rem;}
+  .why-lead .callout{
+    margin-top:26px;border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;background:var(--panel);
+    display:flex;gap:14px;align-items:center;
+  }
+  .why-lead .callout .badge{
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+    color:#0B0C0F;background:var(--filament);border-radius:6px;padding:5px 9px;white-space:nowrap;font-weight:700;
+  }
+  .why-lead .callout p{margin:0;color:var(--text);font-size:.92rem;}
+  .creds{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .cred{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;
+    border:1px solid var(--line);border-radius:20px;padding:7px 14px;color:var(--muted);
+  }
+  .cred b{color:var(--filament);font-weight:500;}
+  a.cred{transition:border-color .2s ease, color .2s ease;}
+  a.cred:hover{border-color:var(--wp);color:var(--text);}
+  .timeline{position:relative;padding-left:26px;}
+  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:var(--line);}
+  .tl-item{position:relative;padding:0 0 26px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";position:absolute;left:-24px;top:4px;width:11px;height:11px;border-radius:50%;
+    background:var(--ink);border:2px solid var(--wp);
+  }
+  .tl-item .k{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--wp-soft);}
+  .tl-item h3{font-family:var(--display);font-weight:500;font-size:1.1rem;margin:6px 0 4px;}
+  .tl-item p{color:var(--muted);font-size:.94rem;margin:0;}
+  @media (max-width:860px){ .why-grid{grid-template-columns:1fr;gap:38px;} }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:16px;padding:48px;
+  }
+  .about > div{max-width:760px;}
+  .about h2{font-family:var(--display);font-weight:600;font-size:1.9rem;letter-spacing:-.01em;margin:14px 0 0;}
+  .about p{color:var(--muted);margin:16px 0 0;}
+  .about .stats{display:flex;gap:16px;flex-wrap:wrap;}
+  .stat{
+    flex:1;min-width:120px;
+    border:1px solid var(--line-soft);border-radius:12px;
+    padding:20px 18px;background:var(--editor);
+  }
+  .stat .n{font-family:var(--display);font-weight:600;font-size:1.6rem;}
+  .stat .l{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-head{text-align:center;max-width:44ch;margin:0 auto 44px;}
+  .contact-head h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,4vw,3rem);letter-spacing:-.02em;margin:16px 0 0;}
+  .contact-head p{color:var(--muted);margin:14px 0 0;}
+  .contact-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(116px,1fr));gap:14px;
+  }
+  .cc{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:24px 14px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;
+    transition:border-color .2s ease, background .2s ease, transform .2s ease;
+  }
+  .cc:hover{border-color:var(--wp);background:#17181D;transform:translateY(-3px);}
+  .cc-ico{
+    width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+    background:rgba(94,23,235,.12);color:var(--wp-soft);transition:background .2s ease, color .2s ease;
+  }
+  .cc:hover .cc-ico{background:var(--wp);color:#fff;}
+  .cc-ico svg{width:21px;height:21px;}
+  .cc-label{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .2s ease;}
+  .cc:hover .cc-label{color:var(--text);}
+  .cc.wa .cc-ico{background:rgba(37,211,102,.14);color:#25D366;}
+  .cc.wa:hover .cc-ico{background:#25D366;color:#0B0C0F;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line-soft);padding:40px 0;margin-top:20px;}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .foot-inner .brand{font-size:.85rem;}
+  .foot-meta{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.04em;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;}
+    .about{grid-template-columns:1fr;padding:34px;}
+    nav.links{display:none;}
+    .hero{padding:60px 0 48px;}
+    section{padding:60px 0;}
+  }
+
+  /* ---------- PRIVATE TRACKER ---------- */
+  #tracker[hidden]{display:none;}
+  #tracker{scroll-margin-top:90px;}
+  .lockbox{
+    max-width:440px;margin:0 auto;text-align:center;
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:40px 34px;
+  }
+  .lockbox .ico{
+    width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin:0 auto 18px;
+    background:rgba(94,23,235,.14);color:var(--wp-soft);
+  }
+  .lockbox h3{font-family:var(--display);font-weight:600;font-size:1.3rem;margin:0 0 6px;}
+  .lockbox p{color:var(--muted);font-size:.94rem;margin:0 0 22px;}
+  .lock-form{display:flex;gap:10px;}
+  .lock-form input{
+    flex:1;background:var(--editor);border:1px solid var(--line);border-radius:10px;
+    padding:12px 14px;color:var(--text);font-family:var(--mono);font-size:.95rem;letter-spacing:.05em;
+  }
+  .lock-form input:focus{outline:none;border-color:var(--wp);}
+  .lock-form button{
+    background:var(--wp);color:#fff;border:none;border-radius:10px;padding:0 20px;
+    font-family:var(--mono);font-size:.82rem;cursor:pointer;transition:filter .2s ease;
+  }
+  .lock-form button:hover{filter:brightness(1.12);}
+  .lock-err{color:#FF7B72;font-family:var(--mono);font-size:.78rem;margin-top:12px;min-height:1em;opacity:0;}
+  .lock-err.show{opacity:1;}
+  .shake{animation:shake .4s;}
+  @keyframes shake{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-7px)}40%,60%{transform:translateX(7px)}}
+
+  .track-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .tproj{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px 24px;}
+  .tproj-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:6px;}
+  .tproj-head h3{font-family:var(--display);font-weight:600;font-size:1.16rem;margin:0;}
+  .tproj-head a{font-family:var(--mono);font-size:.72rem;color:var(--wp-soft);display:inline-flex;align-items:center;gap:.4em;margin-top:6px;}
+  .tproj-head a svg{width:12px;height:12px;}
+  .tprog{font-family:var(--mono);font-size:.72rem;color:var(--muted);white-space:nowrap;}
+  .tbar{height:5px;border-radius:4px;background:var(--line);overflow:hidden;margin:12px 0 18px;}
+  .tbar span{display:block;height:100%;width:0;background:var(--filament);transition:width .3s ease;}
+  .tlist{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-direction:column;gap:2px;}
+  .tlist li{display:flex;align-items:flex-start;gap:11px;padding:9px 6px;border-radius:8px;transition:background .15s ease;}
+  .tlist li:hover{background:var(--editor);}
+  .tlist .chk{
+    flex-shrink:0;width:18px;height:18px;border-radius:5px;border:1.5px solid var(--line);
+    background:transparent;cursor:pointer;display:grid;place-items:center;margin-top:1px;transition:.15s;
+  }
+  .tlist .chk svg{width:11px;height:11px;color:#0B0C0F;opacity:0;}
+  .tlist li.done .chk{background:var(--active);border-color:var(--active);}
+  .tlist li.done .chk svg{opacity:1;}
+  .tlist .txt{flex:1;font-size:.92rem;color:var(--text);cursor:pointer;line-height:1.4;word-break:break-word;}
+  .tlist li.done .txt{color:var(--muted);text-decoration:line-through;}
+  .tlist .del{flex-shrink:0;background:none;border:none;color:var(--muted);cursor:pointer;font-size:1.1rem;line-height:1;padding:0 2px;opacity:0;transition:.15s;}
+  .tlist li:hover .del{opacity:.7;}
+  .tlist .del:hover{color:#FF7B72;opacity:1;}
+  .tadd{display:flex;gap:8px;}
+  .tadd input{flex:1;background:var(--editor);border:1px solid var(--line);border-radius:9px;padding:9px 12px;color:var(--text);font-family:var(--body);font-size:.88rem;}
+  .tadd input:focus{outline:none;border-color:var(--wp);}
+  .tadd button{background:transparent;border:1px solid var(--line);border-radius:9px;color:var(--wp-soft);padding:0 14px;font-family:var(--mono);font-size:.78rem;cursor:pointer;transition:.2s;}
+  .tadd button:hover{border-color:var(--wp);}
+  .track-note{color:var(--muted);font-size:.82rem;margin-top:22px;text-align:center;font-family:var(--mono);}
+  .foot-lock{background:none;border:none;color:var(--muted);font-family:var(--mono);font-size:.72rem;cursor:pointer;display:inline-flex;align-items:center;gap:.45em;transition:color .2s ease;padding:0;}
+  .foot-lock:hover{color:var(--wp-soft);}
+  .foot-lock svg{width:11px;height:11px;}
+  @media (max-width:760px){ .track-grid{grid-template-columns:1fr;} }
+
+  /* ---------- PRIVATE TRACKER end ---------- */
+
+  /* ---------- MOTION / PARTICLES ---------- */
+  .hero{position:relative;overflow:hidden;}
+  .hero > .wrap{position:relative;z-index:1;}
+  #fx{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.5;}
+  section, footer{position:relative;z-index:1;}
+  .anim-ready .sec-head,
+  .anim-ready .give,
+  .anim-ready .block,
+  .anim-ready .proj,
+  .anim-ready .tl-item,
+  .anim-ready .cc,
+  .anim-ready .stat,
+  .anim-ready .hero .eyebrow,
+  .anim-ready .hero h1,
+  .anim-ready .hero .lead,
+  .anim-ready .hero-cta{opacity:0;}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important;scroll-behavior:auto;}
+    #fx{display:none;}
+    .code .ln{opacity:1;transform:none;}
+  }
+
+  :focus-visible{outline:2px solid var(--wp-soft);outline-offset:3px;border-radius:4px;}
+</style>
+<script>
+  (function(){ try{
+    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      document.documentElement.classList.add('anim-ready');
+    }
+  }catch(e){} })();
+</script>
+</head>
+<body>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand"><span class="bracket">&lt;</span>devxpert_labs<span class="bracket">/&gt;</span></a>
+    <nav class="links">
+      <a href="#giving">Giving back</a>
+      <a href="#workbench">Projects</a>
+      <a href="#why">Why</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Work with the lab</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Experimental Lab · by Anup Kankale · Mumbai</span>
+      <h1>Where curiosity turns into <em>working code.</em></h1>
+      <p class="lead">DevXpert Labs is the experimental arm of Anup Kankale. It's a workbench where freelance client projects and self-driven experiments get built side by side, just to see how far an idea can go.</p>
+      <div class="hero-cta">
+        <a href="#workbench" class="btn btn-primary">See the experiments →</a>
+        <a href="#contact" class="btn btn-ghost">Work with the lab</a>
+      </div>
+    </div>
+
+    <!-- SIGNATURE: the plugin header, as a real WP plugin row -->
+    <div class="plugin-card" id="pluginCard">
+      <div class="plugin-row">
+        <span class="name">DevXpert Labs<small>by Anup Kankale</small></span>
+        <span class="status" id="statusText"><span class="led"></span>Active</span>
+        <button class="toggle" id="toggle" aria-label="Toggle plugin active state" aria-pressed="true"></button>
+      </div>
+      <div class="code" aria-label="WordPress plugin header">
+<span class="ln"><span class="cd-tag">&lt;?php</span></span><span class="ln"><span class="cd-com">/**</span></span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Plugin Name:</span><span class="cd-com"> </span>DevXpert Labs</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Plugin URI:</span><span class="cd-com">  </span><span class="cd-str">https://devxpertlabs.com</span></span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Description:</span><span class="cd-com">  </span>An experimental lab for WordPress, AI &amp; ideas worth testing.</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Version:</span><span class="cd-com">     </span>1.0.0</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Author:</span><span class="cd-com">      </span>Anup Kankale</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Author URI:</span><span class="cd-com">  </span><span class="cd-str">https://anupkankale.com</span></span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">License:</span><span class="cd-com">     </span>GPL-2.0-or-later</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Text Domain:</span><span class="cd-com"> </span>devxpert-labs</span><span class="ln"><span class="cd-com"> */</span></span>
+      </div>
+      <div class="caption">
+        <span>// try the toggle ↑</span>
+        <span>devxpert-labs.php</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GIVING BACK -->
+<section id="giving">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Giving back</span>
+      <h2>Contributing to the community, no strings attached.</h2>
+      <p>Before the lab ships anything of its own, it gives back. These are the places I contribute time and code to the open web, freely.</p>
+    </div>
+    <div class="give-cards">
+      <div class="give">
+        <div class="top">
+          <span class="kicker">WordPress Core</span>
+          <span class="pill core">Contributor</span>
+        </div>
+        <h3>WordPress 7.0 "Armstrong"</h3>
+        <p>Credited among 875-plus contributors on a WordPress core release used by millions of sites. Code that helps everyone, owned by no one.</p>
+        <a class="link" href="https://wordpress.org/news/2026/05/armstrong/" target="_blank" rel="noopener"><svg viewBox="0 0 122 122" fill="currentColor"><path d="M61 0a61 61 0 100 122A61 61 0 0061 0zM6.2 61c0-7.9 1.7-15.5 4.7-22.3l26 71.3A54.9 54.9 0 016.2 61zM61 115.8c-5.4 0-10.6-.8-15.5-2.2l16.5-47.9 16.9 46.3.4.8A54.7 54.7 0 0161 115.8zm7.6-80.7c3.3-.2 6.3-.6 6.3-.6 3-.3 2.6-4.7-.3-4.5 0 0-8.9.7-14.7.7-5.4 0-14.5-.7-14.5-.7-3-.2-3.3 4.4-.4 4.5 0 0 2.8.4 5.8.6l8.6 23.6-12.1 36.3L37.5 35.1c3.3-.2 6.3-.6 6.3-.6 3-.3 2.6-4.7-.3-4.5 0 0-8.9.7-14.7.7-1 0-2.3 0-3.6-.1A54.8 54.8 0 0161 6.2a54.7 54.7 0 0141.3 18.8c-.2 0-.4 0-.6-.1-5.4 0-9.2 4.7-9.2 9.7 0 4.5 2.6 8.3 5.4 12.9 2.1 3.7 4.5 8.4 4.5 15.2 0 4.7-1.8 10.2-4.2 17.8l-5.5 18.4-20-59.7zm27.4 71.4l16.8-48.5c3.1-7.8 4.2-14.1 4.2-19.7 0-2-.1-3.9-.4-5.7a54.7 54.7 0 01-20.6 73.9z"/></svg> See the release credits</a>
+      </div>
+      <div class="give">
+        <div class="top">
+          <span class="kicker">Free plugin · WordPress.org</span>
+          <span class="pill live">Live · 5 stars</span>
+        </div>
+        <h3>DevXpert Lead Dashboard</h3>
+        <p>A free, open-source (GPL) plugin on the official directory. Built for a real problem, given to the whole WordPress community to install and use.</p>
+        <a class="link" href="https://wordpress.org/plugins/devxpert-lead-dashboard-for-forminator/" target="_blank" rel="noopener"><svg viewBox="0 0 122 122" fill="currentColor"><path d="M61 0a61 61 0 100 122A61 61 0 0061 0zM6.2 61c0-7.9 1.7-15.5 4.7-22.3l26 71.3A54.9 54.9 0 016.2 61zM61 115.8c-5.4 0-10.6-.8-15.5-2.2l16.5-47.9 16.9 46.3.4.8A54.7 54.7 0 0161 115.8zm7.6-80.7c3.3-.2 6.3-.6 6.3-.6 3-.3 2.6-4.7-.3-4.5 0 0-8.9.7-14.7.7-5.4 0-14.5-.7-14.5-.7-3-.2-3.3 4.4-.4 4.5 0 0 2.8.4 5.8.6l8.6 23.6-12.1 36.3L37.5 35.1c3.3-.2 6.3-.6 6.3-.6 3-.3 2.6-4.7-.3-4.5 0 0-8.9.7-14.7.7-1 0-2.3 0-3.6-.1A54.8 54.8 0 0161 6.2a54.7 54.7 0 0141.3 18.8c-.2 0-.4 0-.6-.1-5.4 0-9.2 4.7-9.2 9.7 0 4.5 2.6 8.3 5.4 12.9 2.1 3.7 4.5 8.4 4.5 15.2 0 4.7-1.8 10.2-4.2 17.8l-5.5 18.4-20-59.7zm27.4 71.4l16.8-48.5c3.1-7.8 4.2-14.1 4.2-19.7 0-2-.1-3.9-.4-5.7a54.7 54.7 0 01-20.6 73.9z"/></svg> View on WordPress.org</a>
+      </div>
+      <div class="give">
+        <div class="top">
+          <span class="kicker">Open source</span>
+          <span class="pill oss">Contributor</span>
+        </div>
+        <h3>NudgeBee v1.3.0</h3>
+        <p>Contributing to open-source tooling beyond WordPress, pitching in on a project release for the wider developer community.</p>
+        <a class="link" href="https://github.com/nudgebee/nudgebee/releases/tag/v1.3.0" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg> View the release</a>
+      </div>
+    </div>
+    <p class="give-note">This part matters to me most. I contribute to WordPress core and open source <b>without expecting anything back</b>, because the tools I build my work on were given to me the same way. The lab is my way of paying that forward.</p>
+  </div>
+</section>
+
+<!-- THE STACK -->
+<section id="lab">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What the lab tinkers with</span>
+      <h2>The stack the experiments run on.</h2>
+      <p>Client work or late-night what-if, most builds land somewhere in here.</p>
+    </div>
+    <div class="blocks">
+      <div class="block">
+        <span class="handle">⋮⋮ block</span>
+        <span class="idx">01</span>
+        <h3>Custom Plugins</h3>
+        <p>Purpose-built plugins wired to your business logic, not a generic settings page you'll never fully use.</p>
+      </div>
+      <div class="block">
+        <span class="handle">⋮⋮ block</span>
+        <span class="idx">02</span>
+        <h3>Gutenberg Blocks</h3>
+        <p>Custom blocks and full-site-editing patterns that feel native to the editor and are easy for your team to reach for.</p>
+      </div>
+      <div class="block">
+        <span class="handle">⋮⋮ block</span>
+        <span class="idx">03</span>
+        <h3>WooCommerce</h3>
+        <p>Checkout tweaks, custom flows and integrations for stores that have outgrown the defaults.</p>
+      </div>
+      <div class="block">
+        <span class="handle">⋮⋮ block</span>
+        <span class="idx">04</span>
+        <h3>REST &amp; Integrations</h3>
+        <p>Endpoints and third-party hooks that let WordPress talk cleanly to the rest of your stack.</p>
+      </div>
+      <div class="block">
+        <span class="handle">⋮⋮ block</span>
+        <span class="idx">05</span>
+        <h3>AI Features</h3>
+        <p>Chatbots and LLM-powered helpers that capture leads and quietly remove repetitive busywork.</p>
+      </div>
+      <div class="block">
+        <span class="handle">⋮⋮ block</span>
+        <span class="idx">06</span>
+        <h3>Performance &amp; Fixes</h3>
+        <p>Audits, caching and the unglamorous bug-hunts that make a WordPress site fast and quiet again.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ON THE WORKBENCH -->
+<section id="workbench">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Projects &amp; experiments</span>
+      <h2>Most of my projects land here.</h2>
+      <p>New builds get added over time, each with a link to dig in, live on WordPress.org or open on GitHub.</p>
+    </div>
+    <div class="projects">
+      <div class="proj">
+        <span class="tag">Live · WordPress.org</span>
+        <h3>Lead Dashboard for Forminator &amp; CF7</h3>
+        <p>Built for a travel agency drowning in form submissions and priced out of a CRM. It turns Forminator and Contact Form 7 entries into trackable leads inside WordPress, with statuses, feedback notes and CSV export. Rated 5 stars.</p>
+        <a class="link" href="https://wordpress.org/plugins/devxpert-lead-dashboard-for-forminator/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a1 1 0 0 1 1 1v5.5h2a.5.5 0 0 1 .37.84l-3 3.3a.5.5 0 0 1-.74 0l-3-3.3A.5.5 0 0 1 5 7.5h2V2a1 1 0 0 1 1-1z"/><path d="M3 13.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/></svg>
+          View on WordPress.org
+        </a>
+      </div>
+      <div class="proj">
+        <span class="tag">Experiment · WordPress Plugin</span>
+        <h3>AI Chatbot Plugin</h3>
+        <p>Started as a "can an LLM live inside WordPress cleanly?" test. Now a free plugin for drop-in support and lead capture, minus the heavy setup.</p>
+        <a class="link" href="https://github.com/Anupkankale" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+      <div class="proj">
+        <span class="tag">Experiment · Automation</span>
+        <h3>AI Content Pipeline</h3>
+        <p>A curiosity build to see how far content could route itself: an LLM automation that carries a draft from prompt to published with barely a hand on it.</p>
+        <a class="link" href="https://github.com/Anupkankale" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Why the lab exists</span>
+      <h2>One real problem at a time.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-lead">
+        <p>Five years studying Computer Science, a bachelor's then a master's, followed by three to four years building software professionally and contributing to WordPress core and the wider open-source community. Somewhere in there, a pattern became hard to ignore.</p>
+        <p>The same real-world problems keep coming back, and most tools answer them by piling on complexity instead of removing it. DevXpert Labs is the response: pick one problem, understand it properly, and build the smallest thing that genuinely solves it.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="k">01 · Foundations</div>
+          <h3>Five years of Computer Science</h3>
+          <p>A bachelor's then a master's, learning how software works from the ground up.</p>
+        </div>
+        <div class="tl-item">
+          <div class="k">02 · Practice</div>
+          <h3>Building professionally</h3>
+          <p>Three to four years shipping real software for real users and clients.</p>
+        </div>
+        <div class="tl-item">
+          <div class="k">03 · Community</div>
+          <h3>Giving back to open source</h3>
+          <p>Credited as a contributor on WordPress 7.0 "Armstrong" core, and on projects like NudgeBee.</p>
+        </div>
+        <div class="tl-item">
+          <div class="k">04 · The lab</div>
+          <h3>Turning problems into tools</h3>
+          <p>Taking the problems that keep resurfacing and solving them one focused build at a time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about">
+      <div>
+        <span class="eyebrow">About the lab</span>
+        <h2>Run by Anup. Powered by curiosity.</h2>
+        <p>DevXpert Labs is the experimental workshop of Anup Kankale, a WordPress &amp; PHP developer from Mumbai. It's the place where client deadlines and personal what-ifs get worked out with the same care.</p>
+        <p>The lab exists for one reason: to keep asking how things actually work, then build the answer. The useful experiments become plugins and tools; the rest become lessons. Either way, something ships, usually alongside an uncountable number of cups of chai. ☕</p>
+        <p style="margin-top:22px;"><a class="btn btn-ghost" href="https://anupkankale.com" target="_blank" rel="noopener">More about Anup →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-head">
+      <span class="eyebrow" style="justify-content:center;">Work with the lab</span>
+      <h2>Have something worth testing?</h2>
+      <p>A client project to ship, a plugin idea, or a "could we actually build this?" Bring it to the bench and let's find out.</p>
+    </div>
+    <div class="contact-grid">
+      <a class="cc" href="mailto:anupkankaleak47@gmail.com" aria-label="Email" title="Email">
+        <span class="cc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+        <span class="cc-label">Email</span>
+      </a>
+      <a class="cc" href="tel:+919309905702" aria-label="Call" title="Call">
+        <span class="cc-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.25 1z"/></svg></span>
+        <span class="cc-label">Call</span>
+      </a>
+      <a class="cc wa" href="https://wa.me/919309905702" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+        <span class="cc-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2.5c-5.25 0-9.5 4.25-9.5 9.5 0 1.67.44 3.3 1.27 4.74L2.5 21.5l4.9-1.28a9.46 9.46 0 0 0 4.64 1.19h.01c5.24 0 9.5-4.26 9.5-9.5a9.44 9.44 0 0 0-2.78-6.72A9.44 9.44 0 0 0 12.04 2.5zm0 1.67c2.09 0 4.05.81 5.53 2.29a7.78 7.78 0 0 1 2.29 5.53c0 4.32-3.51 7.83-7.83 7.83a7.8 7.8 0 0 1-3.98-1.09l-.29-.17-2.9.76.77-2.83-.19-.29a7.8 7.8 0 0 1-1.2-4.18c0-4.32 3.51-7.83 7.83-7.83h.17zM8.55 7.35c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34 1 2.5.12.16 1.7 2.6 4.12 3.64.58.25 1.02.4 1.37.51.58.18 1.1.16 1.52.1.46-.07 1.42-.58 1.63-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.64-1.19-1.42-1.33-1.66-.14-.24-.01-.37.1-.49.11-.11.24-.28.36-.43.12-.15.16-.25.24-.41.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.47-.39-.4-.54-.41h-.46z"/></svg></span>
+        <span class="cc-label">WhatsApp</span>
+      </a>
+      <a class="cc" href="https://github.com/Anupkankale" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+        <span class="cc-ico"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></span>
+        <span class="cc-label">GitHub</span>
+      </a>
+      <a class="cc" href="https://www.linkedin.com/company/devxpertspot/" target="_blank" rel="noopener" aria-label="DevXpert" title="DevXpert">
+        <span class="cc-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.3-2.02-3.3-2.02 0-2.33 1.58-2.33 3.2V21h-4z"/></svg></span>
+        <span class="cc-label">DevXpert</span>
+      </a>
+      <a class="cc" href="https://in.linkedin.com/in/anupkankale" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+        <span class="cc-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05C21.4 8.65 22 11 22 14.1V21h-4v-6.1c0-1.45-.03-3.3-2.02-3.3-2.02 0-2.33 1.58-2.33 3.2V21h-4z"/></svg></span>
+        <span class="cc-label">LinkedIn</span>
+      </a>
+      <a class="cc" href="https://about.me/anupkankale" target="_blank" rel="noopener" aria-label="about.me" title="about.me">
+        <span class="cc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg></span>
+        <span class="cc-label">about.me</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE TRACKER -->
+<section id="tracker" hidden>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Private</span>
+      <h2>Project tracker.</h2>
+    </div>
+
+    <div id="lockView">
+      <div class="lockbox">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+        <h3>This area is private</h3>
+        <p>Enter the passcode to view live project progress.</p>
+        <div class="lock-form">
+          <input id="lockInput" type="password" inputmode="numeric" placeholder="Passcode" aria-label="Passcode" autocomplete="off" />
+          <button id="lockBtn" type="button">Unlock</button>
+        </div>
+        <div class="lock-err" id="lockErr">Incorrect passcode.</div>
+      </div>
+    </div>
+
+    <div id="trackView" hidden>
+      <div class="track-grid">
+        <div class="tproj" data-key="staging">
+          <div class="tproj-head">
+            <div>
+              <h3>Staging Site</h3>
+              <a href="https://staging.devxpertlabs.com/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M6 2a1 1 0 0 0 0 2h4.59L3.3 11.29a1 1 0 1 0 1.41 1.42L12 5.4V10a1 1 0 0 0 2 0V3a1 1 0 0 0-1-1H6z"/></svg> staging.devxpertlabs.com</a>
+            </div>
+            <span class="tprog" data-prog></span>
+          </div>
+          <div class="tbar"><span data-fill></span></div>
+          <ul class="tlist" data-list></ul>
+          <div class="tadd">
+            <input type="text" placeholder="Add a task…" aria-label="Add a task" />
+            <button type="button">Add</button>
+          </div>
+        </div>
+
+        <div class="tproj" data-key="plugin">
+          <div class="tproj-head">
+            <div>
+              <h3>Lead Dashboard Plugin</h3>
+              <a href="https://lead-dashboard-plugin.devxpertlabs.com/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M6 2a1 1 0 0 0 0 2h4.59L3.3 11.29a1 1 0 1 0 1.41 1.42L12 5.4V10a1 1 0 0 0 2 0V3a1 1 0 0 0-1-1H6z"/></svg> lead-dashboard-plugin.devxpertlabs.com</a>
+            </div>
+            <span class="tprog" data-prog></span>
+          </div>
+          <div class="tbar"><span data-fill></span></div>
+          <ul class="tlist" data-list></ul>
+          <div class="tadd">
+            <input type="text" placeholder="Add a task…" aria-label="Add a task" />
+            <button type="button">Add</button>
+          </div>
+        </div>
+      </div>
+      <p class="track-note">Changes save to this browser only. // click text to toggle done</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-inner">
+    <a href="#top" class="brand"><span class="bracket">&lt;</span>devxpert_labs<span class="bracket">/&gt;</span></a>
+    <span class="foot-meta">© 2026 DevXpert Labs · the experimental arm of Anup Kankale · Mumbai &nbsp;·&nbsp; <button type="button" class="foot-lock" id="footLock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Private tracker</button></span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  // Reveal the plugin header lines with a staggered write-on effect
+  (function(){
+    var card = document.getElementById('pluginCard');
+    var lines = card.querySelectorAll('.code .ln');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce){
+      lines.forEach(function(l){ l.style.opacity = 1; });
+    } else {
+      lines.forEach(function(l, i){
+        l.style.animationDelay = (0.35 + i * 0.09) + 's';
+      });
+      card.classList.add('reveal');
+    }
+  })();
+
+  // Plugin activate / deactivate toggle (a nod to the WP plugins screen)
+  (function(){
+    var card = document.getElementById('pluginCard');
+    var btn = document.getElementById('toggle');
+    var status = document.getElementById('statusText');
+    var active = true;
+    btn.addEventListener('click', function(){
+      active = !active;
+      card.classList.toggle('off', !active);
+      btn.setAttribute('aria-pressed', String(active));
+      status.innerHTML = '<span class="led"></span>' + (active ? 'Active' : 'Inactive');
+    });
+  })();
+</script>
+<script>
+(function(){
+  var root = document.documentElement;
+  var ready = root.classList.contains('anim-ready');
+
+  // Fallback: if GSAP didn't load, drop the hiding so content is always visible.
+  if(ready && !window.gsap){ root.classList.remove('anim-ready'); ready = false; }
+
+  /* ---- Particle network across the whole page ---- */
+  if(ready){
+    var canvas = document.getElementById('fx');
+    if(canvas && canvas.getContext){
+      var ctx = canvas.getContext('2d');
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var W = 0, H = 0, pts = [], raf = null, mouse = {x:-9999, y:-9999};
+      function build(){
+        W = window.innerWidth; H = window.innerHeight;
+        canvas.width = W * dpr; canvas.height = H * dpr;
+        canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        var count = Math.max(24, Math.min(80, Math.round(W * H / 15000)));
+        pts = [];
+        for(var i=0;i<count;i++){
+          pts.push({x:Math.random()*W, y:Math.random()*H,
+            vx:(Math.random()-0.5)*0.28, vy:(Math.random()-0.5)*0.28,
+            r:Math.random()*1.6 + 0.6});
+        }
+      }
+      function frame(){
+        ctx.clearRect(0,0,W,H);
+        for(var i=0;i<pts.length;i++){
+          var a = pts[i];
+          a.x += a.vx; a.y += a.vy;
+          if(a.x < 0 || a.x > W) a.vx *= -1;
+          if(a.y < 0 || a.y > H) a.vy *= -1;
+          ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, 6.283);
+          ctx.fillStyle = 'rgba(169,139,255,0.55)'; ctx.fill();
+          for(var j=i+1;j<pts.length;j++){
+            var b = pts[j], dx = a.x-b.x, dy = a.y-b.y, d = dx*dx+dy*dy;
+            if(d < 12000){
+              ctx.strokeStyle = 'rgba(94,23,235,' + (1 - d/12000)*0.22 + ')';
+              ctx.lineWidth = 1;
+              ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+            }
+          }
+          var mx = a.x-mouse.x, my = a.y-mouse.y, md = mx*mx+my*my;
+          if(md < 22000){
+            ctx.strokeStyle = 'rgba(169,139,255,' + (1 - md/22000)*0.5 + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(mouse.x,mouse.y); ctx.stroke();
+          }
+        }
+        raf = requestAnimationFrame(frame);
+      }
+      function start(){ if(!raf) raf = requestAnimationFrame(frame); }
+      function stop(){ if(raf){ cancelAnimationFrame(raf); raf = null; } }
+      window.addEventListener('resize', build);
+      window.addEventListener('mousemove', function(e){ mouse.x = e.clientX; mouse.y = e.clientY; });
+      window.addEventListener('mouseout', function(e){ if(!e.relatedTarget){ mouse.x = -9999; mouse.y = -9999; } });
+      document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+      build(); start();
+    }
+  }
+
+  /* ---- GSAP reveals ---- */
+  if(ready && window.gsap){
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero entrance
+    var tl = gsap.timeline({defaults:{ease:'power3.out', duration:0.8}});
+    tl.fromTo('.hero .eyebrow', {y:16, opacity:0}, {y:0, opacity:1}, 0)
+      .fromTo('.hero h1',       {y:22, opacity:0}, {y:0, opacity:1}, 0.08)
+      .fromTo('.hero .lead',    {y:20, opacity:0}, {y:0, opacity:1}, 0.20)
+      .fromTo('.hero-cta',      {y:18, opacity:0}, {y:0, opacity:1}, 0.32);
+
+    // Scroll reveals (staggered per group)
+    function batchReveal(sel, stagger){
+      gsap.set(sel, {y:24});
+      ScrollTrigger.batch(sel, {
+        start:'top 86%',
+        onEnter:function(els){
+          gsap.to(els, {opacity:1, y:0, duration:0.6, ease:'power2.out', stagger:stagger, overwrite:true});
+        }
+      });
+    }
+    batchReveal('.sec-head', 0);
+    batchReveal('.give',     0.09);
+    batchReveal('.block',    0.06);
+    batchReveal('.proj',     0.09);
+    batchReveal('.tl-item',  0.08);
+    batchReveal('.cc',       0.05);
+    batchReveal('.stat',     0.08);
+
+    window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
+  }
+})();
+</script>
+<script>
+(function(){
+  var HASH = 2055911363094884;
+  function cyrb53(str, seed){
+    seed = seed || 0;
+    var h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
+    for(var i=0, ch; i<str.length; i++){
+      ch = str.charCodeAt(i);
+      h1 = Math.imul(h1 ^ ch, 2654435761);
+      h2 = Math.imul(h2 ^ ch, 1597334677);
+    }
+    h1 = Math.imul(h1 ^ (h1>>>16), 2246822507);
+    h1 ^= Math.imul(h2 ^ (h2>>>13), 3266489909);
+    h2 = Math.imul(h2 ^ (h2>>>16), 2246822507);
+    h2 ^= Math.imul(h1 ^ (h1>>>13), 3266489909);
+    return 4294967296 * (2097151 & h2) + (h1>>>0);
+  }
+  var TICK = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8.5l3.2 3.2L13 5"/></svg>';
+
+  var section = document.getElementById('tracker');
+  if(!section) return;
+  var lockView  = document.getElementById('lockView');
+  var trackView = document.getElementById('trackView');
+  var input     = document.getElementById('lockInput');
+  var btn       = document.getElementById('lockBtn');
+  var err       = document.getElementById('lockErr');
+  var footLock  = document.getElementById('footLock');
+
+  var seeds = {
+    staging: ["Point staging.devxpertlabs.com to host","Install WordPress + base theme",
+              "Set up SSL and force HTTPS","Configure staging to production workflow"],
+    plugin:  ["Deploy latest plugin build to demo site","Add Forminator + CF7 test forms",
+              "Write demo walkthrough / docs","Collect feedback from first users"]
+  };
+  var state = {};
+  function load(key){
+    try{ var raw = localStorage.getItem('dxl_track_' + key); if(raw) return JSON.parse(raw); }catch(e){}
+    return seeds[key].map(function(t){ return {t:t, d:false}; });
+  }
+  function save(key){ try{ localStorage.setItem('dxl_track_' + key, JSON.stringify(state[key])); }catch(e){} }
+
+  function render(panel){
+    var key = panel.getAttribute('data-key');
+    var arr = state[key];
+    var ul  = panel.querySelector('[data-list]');
+    ul.innerHTML = '';
+    arr.forEach(function(item, idx){
+      var li = document.createElement('li'); if(item.d) li.className = 'done';
+      var chk = document.createElement('button'); chk.className = 'chk'; chk.type='button';
+      chk.setAttribute('aria-label','Toggle done'); chk.innerHTML = TICK;
+      var txt = document.createElement('span'); txt.className = 'txt'; txt.textContent = item.t;
+      var del = document.createElement('button'); del.className = 'del'; del.type='button';
+      del.setAttribute('aria-label','Delete task'); del.innerHTML = '&times;';
+      function toggle(){ item.d = !item.d; save(key); render(panel); }
+      chk.addEventListener('click', toggle);
+      txt.addEventListener('click', toggle);
+      del.addEventListener('click', function(){ arr.splice(idx,1); save(key); render(panel); });
+      li.appendChild(chk); li.appendChild(txt); li.appendChild(del); ul.appendChild(li);
+    });
+    var done = arr.filter(function(i){ return i.d; }).length;
+    panel.querySelector('[data-prog]').textContent = done + '/' + arr.length + ' done';
+    panel.querySelector('[data-fill]').style.width = (arr.length ? (done/arr.length*100) : 0) + '%';
+  }
+
+  function initPanels(){
+    var panels = section.querySelectorAll('.tproj');
+    panels.forEach(function(panel){
+      var key = panel.getAttribute('data-key');
+      state[key] = load(key);
+      render(panel);
+      var add = panel.querySelector('.tadd input');
+      var addBtn = panel.querySelector('.tadd button');
+      function addTask(){
+        var v = add.value.trim(); if(!v) return;
+        state[key].push({t:v, d:false}); save(key); render(panel); add.value=''; add.focus();
+      }
+      addBtn.addEventListener('click', addTask);
+      add.addEventListener('keydown', function(e){ if(e.key==='Enter') addTask(); });
+    });
+  }
+  var built = false;
+
+  function reveal(){
+    section.hidden = false;
+    // ensure the private heading is visible even with scroll-reveal styles
+    section.querySelectorAll('.sec-head').forEach(function(el){ el.style.opacity=1; el.style.transform='none'; });
+    section.scrollIntoView({behavior:'smooth', block:'start'});
+    setTimeout(function(){ input && input.focus(); }, 400);
+  }
+  function unlock(){
+    if(cyrb53(input.value.trim()) === HASH){
+      if(!built){ initPanels(); built = true; }
+      lockView.hidden = true;
+      trackView.hidden = false;
+      err.classList.remove('show');
+    } else {
+      err.classList.add('show');
+      var box = section.querySelector('.lockbox');
+      box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake');
+      input.select();
+    }
+  }
+
+  if(footLock) footLock.addEventListener('click', reveal);
+  if(btn) btn.addEventListener('click', unlock);
+  if(input) input.addEventListener('keydown', function(e){ if(e.key==='Enter') unlock(); });
+  // If someone lands on the page with #tracker in the URL, reveal the gate.
+  if(location.hash === '#tracker') reveal();
+})();
+</script>
+</body>
+</html>
