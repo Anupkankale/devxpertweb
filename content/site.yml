@@ -1,0 +1,68 @@
+name: DevXpert Labs
+title: DevXpert Labs · Web, WordPress, SEO & AI Lab in Mumbai
+description: DevXpert Labs is a Mumbai-based lab for web development, web apps, WordPress, SEO and digital marketing, with a focus on AI. Websites and tools that get built, found and grown, all in one place.
+ogDescription: Web development, web apps, WordPress, SEO and digital marketing, with AI at the core. One lab for building, ranking and growing on the web.
+author: Anup Kankale
+locale: en_IN
+ogImage: /og-image.png
+ogImageAlt: 'DevXpert Labs: web development, WordPress, SEO and digital marketing, with AI at the core.'
+
+# Structured data (schema.org) used by search and answer engines
+organization:
+  legalName: DevXpert Labs
+  slogan: Where curiosity turns into working code.
+  email: anupkankaleak47@gmail.com
+  telephone: '+919309905702'
+  city: Mumbai
+  region: Maharashtra
+  country: IN
+  sameAs:
+    - https://www.linkedin.com/company/devxpertspot/
+    - https://wordpress.org/plugins/devxpert-lead-dashboard-for-forminator/
+person:
+  name: Anup Kankale
+  jobTitle: WordPress & PHP Developer
+  url: https://anupkankale.com
+  sameAs:
+    - https://anupkankale.com
+    - https://github.com/Anupkankale
+    - https://in.linkedin.com/in/anupkankale
+    - https://about.me/anupkankale
+  knowsAbout:
+    - Artificial intelligence
+    - AI chatbots & automation
+    - Web development
+    - Web applications
+    - WordPress
+    - WordPress plugin development
+    - WooCommerce
+    - SEO
+    - Digital marketing
+    - Web performance
+    - PHP
+
+hero:
+  eyebrow: Web · WordPress · SEO · Marketing · AI
+  title: Build it, rank it, grow it,
+  titleEmphasis: with AI at the core.
+  lead: Websites, web apps, WordPress, SEO and digital marketing from one lab, with AI working wherever it saves time or wins customers.
+  primaryCta: { href: '/what-we-do', label: 'See what we do →' }
+  secondaryCta: { href: '/contact', label: 'Work with the lab' }
+
+pluginCard:
+  name: DevXpert Labs
+  by: Web · WordPress · SEO · AI
+  filename: devxpert-labs.php
+  hint: // try the toggle ↑
+  header:
+    - { key: 'Plugin Name:', value: 'DevXpert Labs' }
+    - { key: 'Plugin URI:', value: 'https://devxpertlabs.com', url: true }
+    - { key: 'Description:', value: 'Web, WordPress, SEO, marketing & AI.' }
+    - { key: 'Version:', value: '1.0.0' }
+    - { key: 'Author:', value: 'Anup Kankale' }
+    - { key: 'Author URI:', value: 'https://anupkankale.com', url: true }
+    - { key: 'License:', value: 'GPL-2.0-or-later' }
+    - { key: 'Text Domain:', value: 'devxpert-labs' }
+
+footer:
+  meta: © 2026 DevXpert Labs · the experimental arm of Anup Kankale · Mumbai

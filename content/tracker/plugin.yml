@@ -1,0 +1,9 @@
+order: 2
+key: plugin
+title: Lead Dashboard Plugin
+url: https://lead-dashboard-plugin.devxpertlabs.com/
+seeds:
+  - Deploy latest plugin build to demo site
+  - Add Forminator + CF7 test forms
+  - Write demo walkthrough / docs
+  - Collect feedback from first users

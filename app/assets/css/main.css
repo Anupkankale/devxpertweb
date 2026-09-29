@@ -1,0 +1,150 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ---------- Design tokens ---------- */
+@theme {
+  --color-ink: #0B0C0F;
+  --color-panel: #141518;
+  --color-panel-hover: #17181D;
+  --color-editor: #0F1013;
+  --color-line: #26272E;
+  --color-line-soft: #1B1C22;
+  --color-text: #EDEEF2;
+  --color-muted: #9096A3;
+  --color-wp: #5E17EB;
+  --color-wp-hover: #6D21F0;
+  --color-wp-soft: #A98BFF;
+  --color-filament: #FABF28;
+  --color-active: #45D48A;
+  --color-danger: #FF7B72;
+  --color-whatsapp: #25D366;
+  --color-toggle-off: #2A2C34;
+
+  /* code syntax */
+  --color-c-tag: #FF7B72;
+  --color-c-comment: #6E7787;
+  --color-c-key: #A98BFF;
+  --color-c-str: #7EE0A6;
+
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* the original design collapses at 860px */
+  --breakpoint-md: 860px;
+
+  --animate-line-in: line-in .4s ease forwards;
+  --animate-shake: shake .4s;
+
+  @keyframes line-in {
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes hero-in {
+    from { opacity: 0; translate: 0 18px; }
+    to { opacity: 1; translate: 0 0; }
+  }
+  @keyframes shake {
+    10%, 90% { transform: translateX(-2px); }
+    20%, 80% { transform: translateX(4px); }
+    30%, 50%, 70% { transform: translateX(-7px); }
+    40%, 60% { transform: translateX(7px); }
+  }
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  /* smooth anchor jumps that clear the sticky header */
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+  body {
+    @apply m-0 bg-ink text-text font-body antialiased;
+    line-height: 1.65;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  :focus-visible {
+    outline: 2px solid var(--color-wp-soft);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* ---------- Shared primitives ---------- */
+@utility wrap {
+  @apply mx-auto max-w-[1120px] px-6;
+}
+
+@utility eyebrow {
+  @apply inline-flex items-center gap-[.6em] font-mono text-[.72rem] tracking-[.22em] uppercase text-wp-soft;
+}
+
+/* Elements hidden until revealed; `anim-ready` is set in <head> only when the
+   visitor hasn't asked for reduced motion (and never without JavaScript). */
+.anim-ready [data-reveal] {
+  opacity: 0;
+}
+/* While a refresh restores the scroll position (see app.vue), don't paint the page at the top. */
+.restoring body {
+  visibility: hidden;
+}
+/* Revealed (on screen at first paint, or scrolled into view; see plugins/reveal.client.ts).
+   `backwards` fill: once finished, the element's own styles (e.g. hover lift) apply again. */
+.anim-ready [data-reveal][data-shown] {
+  opacity: 1;
+  animation: hero-in .6s cubic-bezier(.22, .8, .3, 1) backwards;
+}
+
+/* Hero entrance is pure CSS so it starts on first paint, without waiting for
+   the app to load. `data-hero-reveal="<n>"` sets the stagger order. */
+.anim-ready [data-hero-reveal] {
+  animation: hero-in .7s cubic-bezier(.22, .8, .3, 1) backwards;
+  animation-delay: calc(var(--hero-step, 0) * 70ms);
+}
+[data-hero-reveal="1"] { --hero-step: 1; }
+[data-hero-reveal="2"] { --hero-step: 2; }
+[data-hero-reveal="3"] { --hero-step: 3; }
+[data-hero-reveal="4"] { --hero-step: 4; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Page transitions ---------- */
+.page-enter-active,
+.page-leave-active { transition: opacity .2s ease, translate .2s ease; }
+.page-enter-from { opacity: 0; translate: 0 8px; }
+.page-leave-to { opacity: 0; }
+
+/* ---------- Long-form article typography ---------- */
+@utility prose-lab {
+  @apply prose prose-lg max-w-[68ch];
+  --tw-prose-body: var(--color-muted);
+  --tw-prose-headings: var(--color-text);
+  --tw-prose-lead: var(--color-muted);
+  --tw-prose-links: var(--color-wp-soft);
+  --tw-prose-bold: var(--color-text);
+  --tw-prose-counters: var(--color-wp-soft);
+  --tw-prose-bullets: var(--color-wp);
+  --tw-prose-hr: var(--color-line);
+  --tw-prose-quotes: var(--color-text);
+  --tw-prose-quote-borders: var(--color-wp);
+  --tw-prose-captions: var(--color-muted);
+  --tw-prose-code: var(--color-filament);
+  --tw-prose-pre-code: var(--color-text);
+  --tw-prose-pre-bg: var(--color-editor);
+  --tw-prose-th-borders: var(--color-line);
+  --tw-prose-td-borders: var(--color-line-soft);
+
+  & :where(h2, h3) { @apply font-display font-semibold tracking-[-.01em]; scroll-margin-top: 90px; }
+  & :where(h2 a, h3 a) { @apply no-underline text-inherit; }
+  & :where(a) { @apply underline-offset-4 decoration-wp/60 hover:decoration-wp-soft; }
+  & :where(pre) { @apply rounded-xl border border-line; }
+  & :where(code):not(:where(pre *))::before,
+  & :where(code):not(:where(pre *))::after { content: none; }
+}
+

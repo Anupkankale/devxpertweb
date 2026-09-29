@@ -1,0 +1,5 @@
+order: 2
+tag: Experiment · WordPress Plugin
+title: WordPress Chatbot Plugin
+body: A free, lightweight WordPress chatbot that engages visitors, captures leads and stores customer details right in the WordPress database.
+link: { href: 'https://github.com/Anupkankale/chatbot', label: View on GitHub, icon: github }

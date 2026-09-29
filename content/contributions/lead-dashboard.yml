@@ -1,0 +1,6 @@
+order: 3
+kicker: Free plugin · WordPress.org
+pill: { label: Live · 5 stars, variant: live }
+title: DevXpert Lead Dashboard
+body: A free, open-source (GPL) plugin on the official directory. Built for a real problem, given to the whole WordPress community to install and use.
+link: { href: 'https://wordpress.org/plugins/devxpert-lead-dashboard-for-forminator/', label: View on WordPress.org, icon: wordpress }

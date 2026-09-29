@@ -1,0 +1,5 @@
+order: 3
+tag: Experiment · Automation
+title: AI Content Pipeline (n8n)
+body: An end-to-end AI pipeline built with n8n that generates and publishes SEO-optimized content automatically, from prompt to published post.
+link: { href: 'https://github.com/Anupkankale/wp-automation-with-n8n', label: View on GitHub, icon: github }
