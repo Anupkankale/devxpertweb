@@ -1,12 +1,11 @@
 ---
 title: Why I built a free lead dashboard for Forminator and Contact Form 7
 description: A travel agency was drowning in form submissions and priced out of a CRM. Here's why the answer was a small, free WordPress plugin instead of another tool.
-date: 2026-09-28
+date: 2026-09-29
 tags: [WordPress, Plugins, Case study]
-draft: true
+draft: false
 ---
 
-<!-- DRAFT written from existing site copy. Review, add your own details, then set draft: false. -->
 
 The request sounded simple: a travel agency was getting a steady stream of enquiries through its website forms, and they were getting lost. Some were answered twice, some not at all, and nobody could say at a glance which enquiries had turned into bookings.
 

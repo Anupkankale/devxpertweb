@@ -123,9 +123,10 @@ onBeforeUnmount(() => {
       </nav>
 
       <div class="flex items-center gap-3">
+        <!-- Desktop only; on mobile the same button sits at the bottom of the menu -->
         <NuxtLink
           :to="nav.cta.to"
-          class="rounded-lg border border-line px-4 py-[9px] font-mono text-[.8rem] text-text transition-colors duration-200 hover:border-wp hover:bg-wp/15 max-[420px]:hidden"
+          class="rounded-lg border border-line px-4 py-[9px] font-mono text-[.8rem] text-text transition-colors duration-200 hover:border-wp hover:bg-wp/15 max-md:hidden"
         >{{ nav.cta.label }}</NuxtLink>
 
         <!-- Mobile toggle -->
