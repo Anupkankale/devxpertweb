@@ -1,5 +1,5 @@
 order: 2
 tag: Experiment · WordPress Plugin
-title: AI Chatbot Plugin
-body: Started as a "can an LLM live inside WordPress cleanly?" test. Now a free plugin for drop-in support and lead capture, minus the heavy setup.
-link: { href: 'https://github.com/Anupkankale', label: View on GitHub, icon: github }
+title: WordPress Chatbot Plugin
+body: A free, lightweight WordPress chatbot that engages visitors, captures leads and stores customer details right in the WordPress database.
+link: { href: 'https://github.com/Anupkankale/chatbot', label: View on GitHub, icon: github }

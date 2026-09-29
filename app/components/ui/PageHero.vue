@@ -35,7 +35,13 @@ defineProps<{
           {{ ' ' }}<em class="not-italic text-wp-soft">{{ titleEmphasis }}</em>
         </template>
       </h1>
-      <p v-if="lead" class="mt-6 max-w-[58ch] text-[1.08rem] text-muted" data-hero-reveal="3">{{ lead }}</p>
+      <!-- eslint-disable-next-line vue/no-v-html -- escaped by inlineMarkdown -->
+      <p
+        v-if="lead"
+        class="mt-6 max-w-[58ch] text-[1.08rem] text-muted [&_a]:text-wp-soft [&_a]:underline [&_a]:decoration-1 [&_a]:underline-offset-[3px] [&_a]:transition-colors [&_a:hover]:text-text"
+        data-hero-reveal="3"
+        v-html="inlineMarkdown(lead)"
+      />
       <div v-if="$slots.default" class="mt-8" data-hero-reveal="4"><slot /></div>
     </div>
   </section>

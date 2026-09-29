@@ -1,0 +1,6 @@
+order: 1
+kicker: WordPress Core
+pill: { label: Contributor, variant: core }
+title: WordPress 7.1 "Mary Lou"
+body: Credited among 800-plus contributors on the latest WordPress core release (August 2026), shipped to millions of sites worldwide.
+link: { href: 'https://wordpress.org/news/2026/08/mary-lou/', label: See the release credits, icon: wordpress }

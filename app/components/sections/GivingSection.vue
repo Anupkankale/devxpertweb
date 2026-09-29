@@ -11,7 +11,7 @@ const items = computed(() => data.value?.[1] ?? [])
 
 <template>
   <UiSectionShell id="giving" :more="more" :eyebrow="head?.eyebrow" :title="head?.title" :lead="head?.lead">
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-[18px]">
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-[18px]">
       <UiBaseCard v-for="item in items" :key="item.id" class="px-[26px] pb-[26px] pt-7" data-reveal="give">
         <div class="mb-4 flex items-center justify-between gap-3">
           <span class="font-mono text-[.68rem] uppercase tracking-[.14em] text-wp-soft">{{ item.kicker }}</span>

@@ -22,6 +22,9 @@ const items = computed(() => data.value?.[1] ?? [])
         <span class="font-mono text-[.72rem] tracking-[.1em] text-wp-soft">{{ String(item.order).padStart(2, '0') }}</span>
         <h3 class="mb-2 mt-3.5 font-display text-[1.15rem] font-medium">{{ item.title }}</h3>
         <p class="m-0 text-[.94rem] text-muted">{{ item.body }}</p>
+        <ul v-if="item.skills?.length" class="m-0 mt-4 flex list-none flex-wrap gap-[7px] p-0" aria-label="Skills">
+          <li v-for="skill in item.skills" :key="skill" class="rounded-[20px] border border-line px-[11px] py-[5px] font-mono text-[.68rem] tracking-[.04em] text-muted">{{ skill }}</li>
+        </ul>
       </div>
     </div>
   </UiSectionShell>

@@ -42,6 +42,9 @@ usePageSeo(() => page.value && {
             <span class="font-mono text-[.72rem] tracking-[.1em] text-wp-soft">{{ String(s.order).padStart(2, '0') }}</span>
             <h2 class="mb-3 mt-5 font-display text-[1.35rem] font-semibold">{{ s.title }}</h2>
             <p class="m-0 text-muted">{{ s.body }}</p>
+          <ul v-if="s.skills?.length" class="m-0 mt-5 flex list-none flex-wrap gap-[7px] p-0" aria-label="Skills">
+            <li v-for="skill in s.skills" :key="skill" class="rounded-[20px] border border-line px-[11px] py-[5px] font-mono text-[.68rem] tracking-[.04em] text-muted">{{ skill }}</li>
+          </ul>
           </UiBaseCard>
         </div>
       </section>

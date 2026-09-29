@@ -8,7 +8,7 @@ draft: true
 
 <!-- DRAFT written from existing site copy. Add a concrete example or two, then set draft: false. -->
 
-Five years studying Computer Science, a bachelor's then a master's, followed by three to four years building software professionally. Somewhere in there, a pattern became hard to ignore.
+Five years studying Computer Science, a bachelor's then a master's, followed by four years of corporate job experience. Somewhere in there, a pattern became hard to ignore.
 
 **The same real-world problems keep coming back, and most tools answer them by piling on complexity instead of removing it.**
 

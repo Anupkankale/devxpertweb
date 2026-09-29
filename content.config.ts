@@ -88,6 +88,7 @@ export default defineContentConfig({
         order: z.number(),
         title: z.string(),
         body: z.string(),
+        skills: z.array(z.string()).default([]),
       }),
     }),
 
