@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -74,6 +74,15 @@
     align-items:center;
     gap:.6em;
   }
+
+  .lead-link{
+    color:var(--wp-soft);
+    text-decoration:underline;
+    text-underline-offset:3px;
+    text-decoration-thickness:1px;
+    transition:color .2s ease;
+  }
+  .lead-link:hover{color:var(--text);}
 
   /* ---------- NAV ---------- */
   header.nav{
@@ -264,6 +273,8 @@
     margin:14px 0 8px;
   }
   .block p{color:var(--muted);font-size:.94rem;margin:0;}
+  .block .skills{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;}
+  .block .skill{font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;border:1px solid var(--line);border-radius:20px;padding:5px 11px;color:var(--muted);}
   .block .handle{
     position:absolute;top:16px;right:16px;
     font-family:var(--mono);font-size:.7rem;color:var(--muted);
@@ -274,7 +285,7 @@
   .block:hover .handle{opacity:1;transform:none;}
 
   /* ---------- GIVING BACK ---------- */
-  .give-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
+  .give-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;}
   .give{
     position:relative;
     background:var(--panel);border:1px solid var(--line);border-radius:14px;
@@ -557,7 +568,7 @@
     <div>
       <span class="eyebrow">Experimental Lab · by Anup Kankale · Mumbai</span>
       <h1>Where curiosity turns into <em>working code.</em></h1>
-      <p class="lead">DevXpert Labs is the experimental arm of Anup Kankale. It's a workbench where freelance client projects and self-driven experiments get built side by side, just to see how far an idea can go.</p>
+      <p class="lead">DevXpert Labs is the experimental arm of <a href="http://anupkankale.com/" target="_blank" rel="noopener" class="lead-link">Anup Kankale</a>. It's a workbench where freelance client projects and self-driven experiments get built side by side, just to see how far an idea can go.</p>
       <div class="hero-cta">
         <a href="#workbench" class="btn btn-primary">See the experiments →</a>
         <a href="#contact" class="btn btn-ghost">Work with the lab</a>
@@ -572,7 +583,7 @@
         <button class="toggle" id="toggle" aria-label="Toggle plugin active state" aria-pressed="true"></button>
       </div>
       <div class="code" aria-label="WordPress plugin header">
-<span class="ln"><span class="cd-tag">&lt;?php</span></span><span class="ln"><span class="cd-com">/**</span></span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Plugin Name:</span><span class="cd-com"> </span>DevXpert Labs</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Plugin URI:</span><span class="cd-com">  </span><span class="cd-str">https://devxpertlabs.com</span></span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Description:</span><span class="cd-com">  </span>An experimental lab for WordPress, AI &amp; ideas worth testing.</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Version:</span><span class="cd-com">     </span>1.0.0</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Author:</span><span class="cd-com">      </span>Anup Kankale</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Author URI:</span><span class="cd-com">  </span><span class="cd-str">https://anupkankale.com</span></span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">License:</span><span class="cd-com">     </span>GPL-2.0-or-later</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Text Domain:</span><span class="cd-com"> </span>devxpert-labs</span><span class="ln"><span class="cd-com"> */</span></span>
+<span class="ln"><span class="cd-tag">&lt;?php</span></span><span class="ln"><span class="cd-com">/**</span></span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Plugin Name:</span><span class="cd-com"> </span>DevXpert Labs</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Plugin URI:</span><span class="cd-com">  </span><span class="cd-str">https://devxpertlabs.com</span></span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Description:</span><span class="cd-com">  </span>An experimental lab for WordPress, AI &amp; web development.</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Version:</span><span class="cd-com">     </span>1.0.0</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Author:</span><span class="cd-com">      </span>Anup Kankale</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Author URI:</span><span class="cd-com">  </span><span class="cd-str">https://anupkankale.com</span></span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">License:</span><span class="cd-com">     </span>GPL-2.0-or-later</span><span class="ln"><span class="cd-com"> * </span><span class="cd-key">Text Domain:</span><span class="cd-com"> </span>devxpert-labs</span><span class="ln"><span class="cd-com"> */</span></span>
       </div>
       <div class="caption">
         <span>// try the toggle ↑</span>
@@ -591,6 +602,15 @@
       <p>Before the lab ships anything of its own, it gives back. These are the places I contribute time and code to the open web, freely.</p>
     </div>
     <div class="give-cards">
+      <div class="give">
+        <div class="top">
+          <span class="kicker">WordPress Core</span>
+          <span class="pill core">Contributor</span>
+        </div>
+        <h3>WordPress 7.1 "Mary Lou"</h3>
+        <p>Credited among 800-plus contributors on the latest WordPress core release (August 2026), shipped to millions of sites worldwide.</p>
+        <a class="link" href="https://wordpress.org/news/2026/08/mary-lou/" target="_blank" rel="noopener"><svg viewBox="0 0 122 122" fill="currentColor"><path d="M61 0a61 61 0 100 122A61 61 0 0061 0zM6.2 61c0-7.9 1.7-15.5 4.7-22.3l26 71.3A54.9 54.9 0 016.2 61zM61 115.8c-5.4 0-10.6-.8-15.5-2.2l16.5-47.9 16.9 46.3.4.8A54.7 54.7 0 0161 115.8zm7.6-80.7c3.3-.2 6.3-.6 6.3-.6 3-.3 2.6-4.7-.3-4.5 0 0-8.9.7-14.7.7-5.4 0-14.5-.7-14.5-.7-3-.2-3.3 4.4-.4 4.5 0 0 2.8.4 5.8.6l8.6 23.6-12.1 36.3L37.5 35.1c3.3-.2 6.3-.6 6.3-.6 3-.3 2.6-4.7-.3-4.5 0 0-8.9.7-14.7.7-1 0-2.3 0-3.6-.1A54.8 54.8 0 0161 6.2a54.7 54.7 0 0141.3 18.8c-.2 0-.4 0-.6-.1-5.4 0-9.2 4.7-9.2 9.7 0 4.5 2.6 8.3 5.4 12.9 2.1 3.7 4.5 8.4 4.5 15.2 0 4.7-1.8 10.2-4.2 17.8l-5.5 18.4-20-59.7zm27.4 71.4l16.8-48.5c3.1-7.8 4.2-14.1 4.2-19.7 0-2-.1-3.9-.4-5.7a54.7 54.7 0 01-20.6 73.9z"/></svg> See the release credits</a>
+      </div>
       <div class="give">
         <div class="top">
           <span class="kicker">WordPress Core</span>
@@ -627,46 +647,31 @@
 <section id="lab">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">What the lab tinkers with</span>
-      <h2>The stack the experiments run on.</h2>
-      <p>Client work or late-night what-if, most builds land somewhere in here.</p>
+      <span class="eyebrow">What I build</span>
+      <h2>WordPress, AI, and the web.</h2>
+      <p>The lab spans three things, the same mix you'll find on my GitHub: WordPress, AI features, and modern web development.</p>
     </div>
     <div class="blocks">
       <div class="block">
         <span class="handle">⋮⋮ block</span>
-        <span class="idx">01</span>
-        <h3>Custom Plugins</h3>
-        <p>Purpose-built plugins wired to your business logic, not a generic settings page you'll never fully use.</p>
+        <span class="idx">WordPress</span>
+        <h3>Plugins, themes &amp; core</h3>
+        <p>Custom plugins, Gutenberg blocks, WooCommerce and full theme builds like Aquila, plus contributions to WordPress core itself.</p>
+        <div class="skills"><span class="skill">Plugins</span><span class="skill">Themes</span><span class="skill">Gutenberg</span><span class="skill">WooCommerce</span><span class="skill">REST API</span><span class="skill">Core contributor</span></div>
       </div>
       <div class="block">
         <span class="handle">⋮⋮ block</span>
-        <span class="idx">02</span>
-        <h3>Gutenberg Blocks</h3>
-        <p>Custom blocks and full-site-editing patterns that feel native to the editor and are easy for your team to reach for.</p>
+        <span class="idx">AI</span>
+        <h3>Chatbots &amp; automation</h3>
+        <p>LLM-powered chatbots that capture leads, and end-to-end AI content pipelines that generate and publish, wired up with tools like n8n.</p>
+        <div class="skills"><span class="skill">Chatbots</span><span class="skill">LLM features</span><span class="skill">Content pipelines</span><span class="skill">n8n</span><span class="skill">Lead capture</span><span class="skill">Automation</span></div>
       </div>
       <div class="block">
         <span class="handle">⋮⋮ block</span>
-        <span class="idx">03</span>
-        <h3>WooCommerce</h3>
-        <p>Checkout tweaks, custom flows and integrations for stores that have outgrown the defaults.</p>
-      </div>
-      <div class="block">
-        <span class="handle">⋮⋮ block</span>
-        <span class="idx">04</span>
-        <h3>REST &amp; Integrations</h3>
-        <p>Endpoints and third-party hooks that let WordPress talk cleanly to the rest of your stack.</p>
-      </div>
-      <div class="block">
-        <span class="handle">⋮⋮ block</span>
-        <span class="idx">05</span>
-        <h3>AI Features</h3>
-        <p>Chatbots and LLM-powered helpers that capture leads and quietly remove repetitive busywork.</p>
-      </div>
-      <div class="block">
-        <span class="handle">⋮⋮ block</span>
-        <span class="idx">06</span>
-        <h3>Performance &amp; Fixes</h3>
-        <p>Audits, caching and the unglamorous bug-hunts that make a WordPress site fast and quiet again.</p>
+        <span class="idx">Web Development</span>
+        <h3>Responsive sites &amp; web apps</h3>
+        <p>Fast, responsive front-ends in clean HTML, CSS and JavaScript, styled with Tailwind, and moving toward Next.js and headless CMS setups.</p>
+        <div class="skills"><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">JavaScript</span><span class="skill">Tailwind</span><span class="skill">Next.js</span><span class="skill">Headless CMS</span></div>
       </div>
     </div>
   </div>
@@ -692,18 +697,18 @@
       </div>
       <div class="proj">
         <span class="tag">Experiment · WordPress Plugin</span>
-        <h3>AI Chatbot Plugin</h3>
-        <p>Started as a "can an LLM live inside WordPress cleanly?" test. Now a free plugin for drop-in support and lead capture, minus the heavy setup.</p>
-        <a class="link" href="https://github.com/Anupkankale" target="_blank" rel="noopener">
+        <h3>WordPress Chatbot Plugin</h3>
+        <p>A free, lightweight WordPress chatbot that engages visitors, captures leads and stores customer details right in the WordPress database.</p>
+        <a class="link" href="https://github.com/Anupkankale/chatbot" target="_blank" rel="noopener">
           <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           View on GitHub
         </a>
       </div>
       <div class="proj">
         <span class="tag">Experiment · Automation</span>
-        <h3>AI Content Pipeline</h3>
-        <p>A curiosity build to see how far content could route itself: an LLM automation that carries a draft from prompt to published with barely a hand on it.</p>
-        <a class="link" href="https://github.com/Anupkankale" target="_blank" rel="noopener">
+        <h3>AI Content Pipeline (n8n)</h3>
+        <p>An end-to-end AI pipeline built with n8n that generates and publishes SEO-optimized content automatically, from prompt to published post.</p>
+        <a class="link" href="https://github.com/Anupkankale/wp-automation-with-n8n" target="_blank" rel="noopener">
           <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
           View on GitHub
         </a>
@@ -721,7 +726,7 @@
     </div>
     <div class="why-grid">
       <div class="why-lead">
-        <p>Five years studying Computer Science, a bachelor's then a master's, followed by three to four years building software professionally and contributing to WordPress core and the wider open-source community. Somewhere in there, a pattern became hard to ignore.</p>
+        <p>Five years studying Computer Science, a bachelor's then a master's, followed by four years of corporate job experience and contributing to WordPress core and the wider open-source community. Somewhere in there, a pattern became hard to ignore.</p>
         <p>The same real-world problems keep coming back, and most tools answer them by piling on complexity instead of removing it. DevXpert Labs is the response: pick one problem, understand it properly, and build the smallest thing that genuinely solves it.</p>
       </div>
       <div class="timeline">
@@ -732,13 +737,13 @@
         </div>
         <div class="tl-item">
           <div class="k">02 · Practice</div>
-          <h3>Building professionally</h3>
-          <p>Three to four years shipping real software for real users and clients.</p>
+          <h3>Corporate experience</h3>
+          <p>Four years of corporate job experience, shipping real software for real users and clients.</p>
         </div>
         <div class="tl-item">
           <div class="k">03 · Community</div>
           <h3>Giving back to open source</h3>
-          <p>Credited as a contributor on WordPress 7.0 "Armstrong" core, and on projects like NudgeBee.</p>
+          <p>Credited as a contributor on WordPress core releases 7.0 "Armstrong" and 7.1 "Mary Lou", plus projects like NudgeBee.</p>
         </div>
         <div class="tl-item">
           <div class="k">04 · The lab</div>
@@ -758,7 +763,7 @@
         <span class="eyebrow">About the lab</span>
         <h2>Run by Anup. Powered by curiosity.</h2>
         <p>DevXpert Labs is the experimental workshop of Anup Kankale, a WordPress &amp; PHP developer from Mumbai. It's the place where client deadlines and personal what-ifs get worked out with the same care.</p>
-        <p>The lab exists for one reason: to keep asking how things actually work, then build the answer. The useful experiments become plugins and tools; the rest become lessons. Either way, something ships, usually alongside an uncountable number of cups of chai. ☕</p>
+        <p>The lab exists for one reason: to keep asking how things actually work, then build the answer. The useful experiments become plugins and tools; the rest become lessons.</p>
         <p style="margin-top:22px;"><a class="btn btn-ghost" href="https://anupkankale.com" target="_blank" rel="noopener">More about Anup →</a></p>
       </div>
     </div>
