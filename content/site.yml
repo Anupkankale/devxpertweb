@@ -1,0 +1,65 @@
+name: DevXpert Labs
+title: DevXpert Labs · The Experimental Arm of Anup Kankale
+description: DevXpert Labs is the experimental arm of Anup Kankale, a WordPress developer in Mumbai, where freelance client projects and curiosity-driven experiments in WordPress, plugins and AI get built side by side.
+ogDescription: The experimental arm of Anup Kankale, where freelance client work and curiosity-driven experiments share one workbench.
+author: Anup Kankale
+locale: en_IN
+ogImage: /og-image.png
+ogImageAlt: DevXpert Labs, the experimental arm of Anup Kankale. Where curiosity turns into working code.
+
+# Structured data (schema.org) used by search and answer engines
+organization:
+  legalName: DevXpert Labs
+  slogan: Where curiosity turns into working code.
+  email: anupkankaleak47@gmail.com
+  telephone: '+919309905702'
+  city: Mumbai
+  region: Maharashtra
+  country: IN
+  sameAs:
+    - https://www.linkedin.com/company/devxpertspot/
+    - https://wordpress.org/plugins/devxpert-lead-dashboard-for-forminator/
+person:
+  name: Anup Kankale
+  jobTitle: WordPress & PHP Developer
+  url: https://anupkankale.com
+  sameAs:
+    - https://anupkankale.com
+    - https://github.com/Anupkankale
+    - https://in.linkedin.com/in/anupkankale
+    - https://about.me/anupkankale
+  knowsAbout:
+    - WordPress
+    - PHP
+    - WordPress plugin development
+    - Gutenberg blocks
+    - WooCommerce
+    - REST APIs
+    - AI chatbots
+    - Web performance
+
+hero:
+  eyebrow: Experimental Lab · by Anup Kankale · Mumbai
+  title: Where curiosity turns into
+  titleEmphasis: working code.
+  lead: DevXpert Labs is the experimental arm of Anup Kankale. It's a workbench where freelance client projects and self-driven experiments get built side by side, just to see how far an idea can go.
+  primaryCta: { href: '#workbench', label: 'See the experiments →' }
+  secondaryCta: { href: '/contact', label: 'Work with the lab' }
+
+pluginCard:
+  name: DevXpert Labs
+  by: by Anup Kankale
+  filename: devxpert-labs.php
+  hint: // try the toggle ↑
+  header:
+    - { key: 'Plugin Name:', value: 'DevXpert Labs' }
+    - { key: 'Plugin URI:', value: 'https://devxpertlabs.com', url: true }
+    - { key: 'Description:', value: 'An experimental lab for WordPress, AI & ideas worth testing.' }
+    - { key: 'Version:', value: '1.0.0' }
+    - { key: 'Author:', value: 'Anup Kankale' }
+    - { key: 'Author URI:', value: 'https://anupkankale.com', url: true }
+    - { key: 'License:', value: 'GPL-2.0-or-later' }
+    - { key: 'Text Domain:', value: 'devxpert-labs' }
+
+footer:
+  meta: © 2026 DevXpert Labs · the experimental arm of Anup Kankale · Mumbai

@@ -1,0 +1,5 @@
+order: 2
+tag: Experiment · WordPress Plugin
+title: AI Chatbot Plugin
+body: Started as a "can an LLM live inside WordPress cleanly?" test. Now a free plugin for drop-in support and lead capture, minus the heavy setup.
+link: { href: 'https://github.com/Anupkankale', label: View on GitHub, icon: github }

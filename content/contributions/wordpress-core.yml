@@ -1,0 +1,6 @@
+order: 1
+kicker: WordPress Core
+pill: { label: Contributor, variant: core }
+title: WordPress 7.0 "Armstrong"
+body: Credited among 875-plus contributors on a WordPress core release used by millions of sites. Code that helps everyone, owned by no one.
+link: { href: 'https://wordpress.org/news/2026/05/armstrong/', label: See the release credits, icon: wordpress }

@@ -1,0 +1,6 @@
+order: 3
+kicker: Open source
+pill: { label: Contributor, variant: oss }
+title: NudgeBee v1.3.0
+body: Contributing to open-source tooling beyond WordPress, pitching in on a project release for the wider developer community.
+link: { href: 'https://github.com/nudgebee/nudgebee/releases/tag/v1.3.0', label: View the release, icon: github }

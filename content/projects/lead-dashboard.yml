@@ -1,0 +1,5 @@
+order: 1
+tag: Live · WordPress.org
+title: Lead Dashboard for Forminator & CF7
+body: Built for a travel agency drowning in form submissions and priced out of a CRM. It turns Forminator and Contact Form 7 entries into trackable leads inside WordPress, with statuses, feedback notes and CSV export. Rated 5 stars.
+link: { href: 'https://wordpress.org/plugins/devxpert-lead-dashboard-for-forminator/', label: View on WordPress.org, icon: download }

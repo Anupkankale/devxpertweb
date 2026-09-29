@@ -1,0 +1,9 @@
+order: 1
+key: staging
+title: Staging Site
+url: https://staging.devxpertlabs.com/
+seeds:
+  - Point staging.devxpertlabs.com to host
+  - Install WordPress + base theme
+  - Set up SSL and force HTTPS
+  - Configure staging to production workflow
