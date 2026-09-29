@@ -56,7 +56,7 @@ pluginCard:
   hint: // try the toggle ↑
   header:
     - { key: 'Plugin Name:', value: 'DevXpert Labs' }
-    - { key: 'Plugin URI:', value: 'https://devxpertlabs.com', url: true }
+    - { key: 'Plugin URI:', value: 'https://www.devxpertlabs.com', url: true }
     - { key: 'Description:', value: 'Web, WordPress, SEO, marketing & AI.' }
     - { key: 'Version:', value: '1.0.0' }
     - { key: 'Author:', value: 'Anup Kankale' }

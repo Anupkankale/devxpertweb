@@ -136,7 +136,7 @@ Everything is generated from `content/`, so updating a YAML file updates the pag
 - **Staging**: build with `NUXT_PUBLIC_INDEXABLE=false pnpm generate` to emit `noindex` and a disallow-all `robots.txt`.
 - **Icons**: `public/favicon.svg` is the source. `favicon.ico`, the PNG icons, `apple-touch-icon.png` and `og-image.png` (1200×630) were rendered from it. Regenerate them if the brand changes.
 
-After launch, submit `https://devxpertlabs.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
+After launch, submit `https://www.devxpertlabs.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools. The site is served on `www` (Vercel redirects the bare domain there), so `siteUrl` uses `www` too.
 
 ## Notes
 

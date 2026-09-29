@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       // Override per environment, e.g. NUXT_PUBLIC_SITE_URL=https://staging.devxpertlabs.com
-      siteUrl: 'https://devxpertlabs.com',
+      siteUrl: 'https://www.devxpertlabs.com',
       // Set NUXT_PUBLIC_INDEXABLE=false on staging/preview builds to noindex them.
       indexable: true,
       // Web3Forms access key for the contact form (public by design). Set NUXT_PUBLIC_WEB3FORMS_KEY.
