@@ -1,20 +1,23 @@
 ---
-title: Giving back, no strings attached - contributing to WordPress 7.0 "Armstrong"
-description: Why the lab contributes to WordPress core and open source before shipping anything of its own, and what being credited on WordPress 7.0 means.
-date: 2026-09-21
+title: Giving back, no strings attached - contributing to WordPress core
+description: Why the lab contributes to WordPress core and open source before shipping anything of its own, from WordPress 7.0 "Armstrong" to 7.1 "Mary Lou".
+date: 2026-09-29
 tags: [WordPress, Open source, Community]
-draft: true
+draft: false
 ---
 
-<!-- DRAFT written from existing site copy. Add what you worked on in 7.0 and what you learned, then set draft: false. -->
 
 Before DevXpert Labs ships anything of its own, it gives back. That's not a slogan. It's the order the lab actually works in.
 
-## Credited on WordPress 7.0 "Armstrong"
+## Credited on WordPress 7.0 and 7.1
 
 WordPress 7.0 "Armstrong" shipped with 875-plus credited contributors, and I'm one of them. It's a core release used by millions of sites: code that helps everyone and is owned by no one.
 
-[See the release credits](https://wordpress.org/news/2026/05/armstrong/)
+[See the 7.0 release credits](https://wordpress.org/news/2026/05/armstrong/)
+
+Then came WordPress 7.1 "Mary Lou" in August 2026, the latest core release, with 800-plus credited contributors. I'm credited on that one too, shipped to millions of sites worldwide.
+
+[See the 7.1 release credits](https://wordpress.org/news/2026/08/mary-lou/)
 
 ## Beyond WordPress
 

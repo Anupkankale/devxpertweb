@@ -1,12 +1,11 @@
 ---
 title: Build the smallest thing that genuinely solves the problem
 description: Most tools answer real-world problems by piling on complexity. The lab's approach is the opposite. Here's the thinking behind it.
-date: 2026-09-14
+date: 2026-09-29
 tags: [Process, Product thinking]
-draft: true
+draft: false
 ---
 
-<!-- DRAFT written from existing site copy. Add a concrete example or two, then set draft: false. -->
 
 Five years studying Computer Science, a bachelor's then a master's, followed by four years of corporate job experience. Somewhere in there, a pattern became hard to ignore.
 
