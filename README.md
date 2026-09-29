@@ -6,7 +6,7 @@ The DevXpert Labs site, built with [Nuxt 4](https://nuxt.com), [@nuxt/content](h
 
 ```bash
 pnpm install       # install dependencies
-pnpm dev           # dev server at http://localhost:3000
+pnpm dev           # dev server at http://localhost:3000 (bound to 0.0.0.0 so Windows can reach it under WSL)
 pnpm generate      # static build -> .output/public (upload this folder to any static host)
 pnpm preview       # preview the production build
 pnpm typecheck     # vue-tsc type check
@@ -17,13 +17,11 @@ pnpm typecheck     # vue-tsc type check
 | Route | Source |
 |---|---|
 | `/` | `app/pages/index.vue`: sections listed in `app/app.config.ts` |
-| `/about` | About hub: links to the three pages below |
-| `/about/what-we-do` | Services (`content/stack`) and process (`content/process`) |
-| `/about/who-we-are` | `content/about.md`, profile, timeline, contributions |
-| `/about/insights` | Case studies (`content/insights/*.md`), projects, contributions |
-| `/about/insights/<slug>` | One case study |
-| `/blog` | Posts (`content/blog/*.md`) with tag filter and RSS |
-| `/blog/<slug>` | One post, with table of contents and newer/older links |
+| `/what-we-do` | Services (`content/stack`) and process (`content/process`) |
+| `/who-we-are` | `content/about.md`, profile, timeline, contributions |
+| `/what-we-think` | Articles (`content/blog/*.md`) and case studies (`content/insights/*.md`) in one feed, filterable by type, plus projects and contributions |
+| `/what-we-think/<slug>` | One article or case study, with table of contents and newer/older links |
+| `/what-we-think/rss.xml` | RSS feed of articles and case studies |
 | `/contact` | Contact form (Web3Forms) and direct contact options |
 
 Each inner page's hero and SEO copy lives in `content/pages/<name>.yml`.
@@ -43,8 +41,8 @@ content/                 # all site copy, one file per item
   faq/*.yml              # FAQ entries (also emitted as FAQPage structured data)
   about.md               # About section (markdown body + frontmatter)
   pages/*.yml            # hero + SEO title/description for each inner page
-  blog/*.md              # blog posts
-  insights/*.md          # case studies (served under /about/insights/)
+  blog/*.md              # articles (served under /what-we-think/<slug>)
+  insights/*.md          # case studies (also under /what-we-think/<slug>; keep file names unique across both folders)
   process/*.yml          # "How the lab works" steps
 content.config.ts        # schema for every collection above
 app/
@@ -56,7 +54,9 @@ app/
     layout/              # AppHeader, AppFooter, BrandMark, ParticleCanvas
     sections/            # one component per home-page section
     hero/, tracker/      # section-specific pieces
-  composables/           # useReveal (GSAP), useTracker, useTrackerGate, usePasscode
+  composables/           # SEO/schema, content helpers, tracker state
+  plugins/reveal.client.ts # scroll reveals (IntersectionObserver + CSS)
+  router.options.ts      # scroll restoration rules
   utils/                 # icon map, particle engine, text helpers
   error.vue              # branded 404 / error page (noindex)
 server/routes/           # build-time generated robots.txt, sitemap.xml, llms.txt
@@ -64,9 +64,9 @@ public/                  # favicons, web manifest, social share image
   assets/css/main.css    # Tailwind import + design tokens (@theme)
 ```
 
-## Writing a blog post
+## Writing an article
 
-Create `content/blog/my-post.md`:
+Create `content/blog/my-post.md` (it's published at `/what-we-think/my-post`):
 
 ```md
 ---
@@ -80,9 +80,9 @@ draft: true
 Write the post in Markdown. `##` headings build the table of contents.
 ```
 
-Posts with `draft: true` show up in `pnpm dev` with a "Draft" badge but are left out of `pnpm generate`: no page, no sitemap entry, no RSS item. Set `draft: false` to publish. Case studies work the same way in `content/insights/`, with extra `kind`, `client`, `services`, `outcome` and `link` fields.
+Entries with `draft: true` show up in `pnpm dev` with a "Draft" badge but are left out of `pnpm generate`: no page, no sitemap entry, no RSS item. Set `draft: false` to publish. Case studies work the same way in `content/insights/`, with extra `kind`, `client`, `services`, `outcome` and `link` fields. Both appear together on `/what-we-think` and in the home page's "What we think" section.
 
-The three starter posts and the case study were drafted from facts already on the site. Review and personalise them before publishing.
+The three starter articles and the case study were drafted from facts already on the site. Review and personalise them before publishing.
 
 ## Contact form
 
@@ -121,7 +121,7 @@ The same pattern works for contributions, stack blocks, timeline steps, contact 
 
 **Change colours or fonts**: edit the `@theme` tokens in `app/assets/css/main.css`. Every utility (`bg-panel`, `text-wp-soft`, `font-mono`, …) picks them up.
 
-**Scroll reveal**: add `data-reveal="<group>"` to an element. Groups and their stagger timing are in `app/composables/useReveal.ts`.
+**Scroll reveal**: add `data-reveal="<group>"` to an element. Groups and their stagger timing are in `app/plugins/reveal.client.ts`; the animation itself is `[data-reveal][data-shown]` in `main.css`.
 
 ## SEO & AEO
 
@@ -131,7 +131,7 @@ Everything is generated from `content/`, so updating a YAML file updates the pag
 - **Structured data**: `app/composables/useStructuredData.ts` emits one linked JSON-LD `@graph`: Organization + ProfessionalService, Person, WebSite, WebPage, an ItemList of projects and a FAQPage. Validate with the [Rich Results Test](https://search.google.com/test/rich-results) after deploying.
 - **Answer engines**: the visible FAQ section gives direct, quotable answers, and `/llms.txt` is a plain-text summary for AI crawlers. `robots.txt` allows all crawlers, including AI bots.
 - **Per-page SEO**: every page calls `usePageSeo()` (in `app/composables/usePageSeo.ts`) for its title, description, WebPage type, breadcrumbs and extra JSON-LD. Posts get `BlogPosting` and case studies get `Article`.
-- **Crawling**: `/robots.txt`, `/sitemap.xml` (static pages plus every published post and case study) and `/blog/rss.xml` are generated at build time.
+- **Crawling**: `/robots.txt`, `/sitemap.xml` (static pages plus every published article and case study) and `/what-we-think/rss.xml` are generated at build time.
 - **Site URL**: `runtimeConfig.public.siteUrl` in `nuxt.config.ts` (override with `NUXT_PUBLIC_SITE_URL`).
 - **Staging**: build with `NUXT_PUBLIC_INDEXABLE=false pnpm generate` to emit `noindex` and a disallow-all `robots.txt`.
 - **Icons**: `public/favicon.svg` is the source. `favicon.ico`, the PNG icons, `apple-touch-icon.png` and `og-image.png` (1200×630) were rendered from it. Regenerate them if the brand changes.

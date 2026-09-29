@@ -16,7 +16,7 @@ const ids = useSchemaIds()
 usePageSeo(() => page.value && {
   title: page.value.seoTitle,
   description: page.value.seoDescription,
-  crumbs: [{ label: 'About', to: '/about' }, { label: 'What we do', to: '/about/what-we-do' }],
+  crumbs: [{ label: 'What we do', to: '/what-we-do' }],
   nodes: () => [{
     '@type': 'ItemList',
     'name': 'Services',
@@ -32,7 +32,7 @@ usePageSeo(() => page.value && {
 <template>
   <div>
     <template v-if="page">
-      <UiPageHero v-bind="page" :crumbs="[{ label: 'About', to: '/about' }, { label: 'What we do', to: '/about/what-we-do' }]">
+      <UiPageHero v-bind="page" :crumbs="[{ label: 'What we do', to: '/what-we-do' }]">
         <UiBaseButton href="/contact">Discuss a project →</UiBaseButton>
       </UiPageHero>
 

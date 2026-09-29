@@ -1,48 +1,43 @@
-import type { Crumb } from './usePageSeo'
-
 /**
- * Loads one blog post / insight by the current route and wires its SEO:
- * meta tags, BlogPosting/Article JSON-LD, breadcrumbs and prev/next links.
+ * Loads the What-we-think entry (article or case study) for the current route and
+ * wires its SEO: meta tags, BlogPosting/Article JSON-LD, breadcrumbs and
+ * newer/older links across the whole What-we-think feed.
  */
-export async function useArticle<C extends 'blog' | 'insights'>(collection: C, crumbs: Crumb[]) {
+export async function useArticle() {
   const nuxtApp = useNuxtApp()
   const route = useRoute()
   const ids = useSchemaIds()
   const path = route.path.replace(/\/$/, '')
 
-  const [entry, { data: all }] = await Promise.all([
-    useEntry(collection, path),
-    useEntries(collection),
-  ])
+  const [entry, { data: feed }] = await Promise.all([useInsightEntry(path), useInsightsFeed()])
 
-  const index = computed(() => (all.value ?? []).findIndex(e => e.path === path))
-  const prev = computed(() => index.value > 0 ? all.value![index.value - 1] : null)
-  const next = computed(() => index.value >= 0 ? all.value![index.value + 1] ?? null : null)
-  const trail = computed(() => [...crumbs, { label: entry.value.title, to: path }])
+  const index = computed(() => (feed.value ?? []).findIndex(e => e.path === path))
+  const prev = computed(() => index.value > 0 ? feed.value![index.value - 1] : null)
+  const next = computed(() => index.value >= 0 ? feed.value![index.value + 1] ?? null : null)
+  const trail = computed(() => [{ label: 'What we think', to: '/what-we-think' }, { label: entry.value.title, to: path }])
+
+  const tags = computed(() => entry.value.type === 'article' ? entry.value.tags ?? [] : entry.value.services ?? [])
+  const updated = computed(() => entry.value.type === 'article' ? entry.value.updated : undefined)
 
   // Composables after an await need the Nuxt context restored.
   nuxtApp.runWithContext(() => usePageSeo(() => ({
     title: entry.value.title,
     description: entry.value.description,
     crumbs: trail.value,
-    article: {
-      published: entry.value.date,
-      modified: 'updated' in entry.value ? entry.value.updated : undefined,
-      tags: 'tags' in entry.value ? entry.value.tags ?? [] : undefined,
-    },
+    article: { published: entry.value.date, modified: updated.value, tags: tags.value },
     nodes: () => [{
-      '@type': collection === 'blog' ? 'BlogPosting' : 'Article',
+      '@type': entry.value.type === 'article' ? 'BlogPosting' : 'Article',
       '@id': `${ids.siteUrl}${path}#article`,
       'headline': entry.value.title,
       'description': entry.value.description,
       'datePublished': entry.value.date,
-      'dateModified': ('updated' in entry.value && entry.value.updated) || entry.value.date,
+      'dateModified': updated.value || entry.value.date,
       'author': { '@id': ids.person },
       'publisher': { '@id': ids.org },
       'image': `${ids.siteUrl}/og-image.png`,
       'mainEntityOfPage': { '@id': `${ids.siteUrl}${path}#webpage` },
       'inLanguage': 'en',
-      ...('tags' in entry.value && entry.value.tags?.length ? { keywords: entry.value.tags.join(', ') } : {}),
+      ...(tags.value.length ? { keywords: tags.value.join(', ') } : {}),
       ...(entry.value.readingTime ? { timeRequired: `PT${entry.value.readingTime}M` } : {}),
     }],
   })))

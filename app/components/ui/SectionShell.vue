@@ -11,7 +11,7 @@ withDefaults(defineProps<{
   lead?: string
   align?: 'left' | 'center'
   reveal?: boolean
-  /** optional link shown beside the header, e.g. { label: 'All insights', to: '/about/insights' } */
+  /** optional link shown beside the header, e.g. { label: 'Read our thinking', to: '/what-we-think' } */
   more?: { label: string, to: string }
 }>(), { reveal: true })
 </script>

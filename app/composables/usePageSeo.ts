@@ -12,7 +12,7 @@ interface PageSeoOptions {
   description: string
   /** schema.org type(s) of this page, e.g. 'AboutPage', 'ContactPage', 'CollectionPage' */
   schemaType?: string | string[]
-  /** Breadcrumb trail after Home, e.g. [{ label: 'About', to: '/about' }] */
+  /** Breadcrumb trail after Home, e.g. [{ label: 'What we think', to: '/what-we-think' }] */
   crumbs?: Crumb[]
   /** @id of the entity this page is primarily about */
   mainEntity?: string

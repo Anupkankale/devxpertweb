@@ -160,9 +160,11 @@ export default defineContentConfig({
       }),
     }),
 
+    // Articles and case studies are both served under /what-we-think/<slug>
+    // (keep file names unique across content/blog and content/insights).
     blog: defineCollection({
       type: 'page',
-      source: 'blog/*.md',
+      source: { include: 'blog/*.md', prefix: '/what-we-think' },
       schema: z.object({
         date: z.string(),
         updated: z.string().optional(),
@@ -174,8 +176,7 @@ export default defineContentConfig({
 
     insights: defineCollection({
       type: 'page',
-      // served under /about/insights/<slug>
-      source: { include: 'insights/*.md', prefix: '/about/insights' },
+      source: { include: 'insights/*.md', prefix: '/what-we-think' },
       schema: z.object({
         date: z.string(),
         kind: z.string(),

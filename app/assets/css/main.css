@@ -79,16 +79,26 @@
   @apply inline-flex items-center gap-[.6em] font-mono text-[.72rem] tracking-[.22em] uppercase text-wp-soft;
 }
 
-/* Elements hidden before GSAP reveals them; `anim-ready` is set pre-hydration
-   and removed again if motion is reduced or GSAP fails to start. */
+/* Elements hidden until revealed; `anim-ready` is set in <head> only when the
+   visitor hasn't asked for reduced motion (and never without JavaScript). */
 .anim-ready [data-reveal] {
   opacity: 0;
 }
+/* While a refresh restores the scroll position (see app.vue), don't paint the page at the top. */
+.restoring body {
+  visibility: hidden;
+}
+/* Revealed (on screen at first paint, or scrolled into view; see plugins/reveal.client.ts).
+   `backwards` fill: once finished, the element's own styles (e.g. hover lift) apply again. */
+.anim-ready [data-reveal][data-shown] {
+  opacity: 1;
+  animation: hero-in .6s cubic-bezier(.22, .8, .3, 1) backwards;
+}
 
 /* Hero entrance is pure CSS so it starts on first paint, without waiting for
-   the app or GSAP to load. `data-hero-reveal="<n>"` sets the stagger order. */
+   the app to load. `data-hero-reveal="<n>"` sets the stagger order. */
 .anim-ready [data-hero-reveal] {
-  animation: hero-in .7s cubic-bezier(.22, .8, .3, 1) both;
+  animation: hero-in .7s cubic-bezier(.22, .8, .3, 1) backwards;
   animation-delay: calc(var(--hero-step, 0) * 70ms);
 }
 [data-hero-reveal="1"] { --hero-step: 1; }

@@ -10,7 +10,7 @@ usePageSeo(() => page.value && {
   title: page.value.seoTitle,
   description: page.value.seoDescription,
   schemaType: ['AboutPage', 'ProfilePage'],
-  crumbs: [{ label: 'About', to: '/about' }, { label: 'Who we are', to: '/about/who-we-are' }],
+  crumbs: [{ label: 'Who we are', to: '/who-we-are' }],
   mainEntity: ids.person,
 })
 </script>
@@ -18,7 +18,7 @@ usePageSeo(() => page.value && {
 <template>
   <div>
     <template v-if="page && site">
-      <UiPageHero v-bind="page" :crumbs="[{ label: 'About', to: '/about' }, { label: 'Who we are', to: '/about/who-we-are' }]" />
+      <UiPageHero v-bind="page" :crumbs="[{ label: 'Who we are', to: '/who-we-are' }]" />
 
       <section class="relative z-[1] pb-10" aria-label="The story">
         <div class="wrap grid grid-cols-[1.4fr_1fr] items-start gap-12 max-md:grid-cols-1">

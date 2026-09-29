@@ -14,7 +14,7 @@ const { data: site } = await useSite()
         >
           {{ site.hero.title }} <em class="not-italic text-wp-soft">{{ site.hero.titleEmphasis }}</em>
         </h1>
-        <p class="mt-[22px] max-w-[34ch] text-[1.08rem] text-muted" data-hero-reveal="2">{{ site.hero.lead }}</p>
+        <p class="mt-[22px] max-w-[38ch] text-[1.08rem] text-muted" data-hero-reveal="2">{{ site.hero.lead }}</p>
         <div class="mt-8 flex flex-wrap gap-3.5" data-hero-reveal="3">
           <UiBaseButton :href="site.hero.primaryCta.href">{{ site.hero.primaryCta.label }}</UiBaseButton>
           <UiBaseButton :href="site.hero.secondaryCta.href" variant="ghost">{{ site.hero.secondaryCta.label }}</UiBaseButton>

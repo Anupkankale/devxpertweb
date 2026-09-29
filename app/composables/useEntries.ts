@@ -1,29 +1,53 @@
-import type { PageCollections } from '@nuxt/content'
-
-type Entry = 'blog' | 'insights'
+import type { BlogCollectionItem, InsightsCollectionItem } from '@nuxt/content'
 
 /** Drafts are visible while developing (`pnpm dev`) and excluded from builds. */
 export const showDrafts = import.meta.dev
 
-/** Published entries of a long-form collection, newest first. */
-export function useEntries<C extends Entry>(collection: C, options: { limit?: number, key?: string } = {}) {
-  return useAsyncData(options.key ?? `${collection}-list-${options.limit ?? 'all'}`, () => {
-    let query = queryCollection(collection).order('date', 'DESC')
-    if (!showDrafts) query = query.where('draft', '=', false)
-    if (options.limit) query = query.limit(options.limit)
-    return query.all() as Promise<PageCollections[C][]>
+export type EntryType = 'article' | 'case-study'
+
+/** One item of the What-we-think feed: a blog article or a case study. */
+export type FeedEntry =
+  | (BlogCollectionItem & { type: 'article' })
+  | (InsightsCollectionItem & { type: 'case-study' })
+
+export const entryLabel = (e: FeedEntry) => e.type === 'article' ? 'Article' : e.kind
+
+function published<T extends { draft?: boolean }>(items: T[]) {
+  return showDrafts ? items : items.filter(i => !i.draft)
+}
+
+/** Articles + case studies, newest first (drafts only in dev). */
+export function useInsightsFeed(options: { limit?: number } = {}) {
+  return useAsyncData(`insights-feed-${options.limit ?? 'all'}`, async () => {
+    const [articles, studies] = await Promise.all([
+      queryCollection('blog').order('date', 'DESC').all(),
+      queryCollection('insights').order('date', 'DESC').all(),
+    ])
+    const feed: FeedEntry[] = [
+      ...published(articles).map(a => ({ ...a, type: 'article' as const })),
+      ...published(studies).map(s => ({ ...s, type: 'case-study' as const })),
+    ].sort((a, b) => b.date.localeCompare(a.date))
+    return options.limit ? feed.slice(0, options.limit) : feed
   })
 }
 
-/** A single entry by route path; 404s for missing (or, in builds, draft) entries. */
-export async function useEntry<C extends Entry>(collection: C, path: string) {
-  const { data } = await useAsyncData(`${collection}-${path}`, () =>
-    queryCollection(collection).path(path).first() as Promise<PageCollections[C] | null>)
-  const item = data.value as { draft?: boolean } | null
-  if (!item || (item.draft && !showDrafts)) {
+/** The article or case study at `path`; 404s if missing (or a draft, in builds). */
+export async function useInsightEntry(path: string) {
+  const { data } = await useAsyncData(`insight-${path}`, async () => {
+    const [article, study] = await Promise.all([
+      queryCollection('blog').path(path).first(),
+      queryCollection('insights').path(path).first(),
+    ])
+    if (article) return { ...article, type: 'article' as const } as FeedEntry
+    if (study) return { ...study, type: 'case-study' as const } as FeedEntry
+    return null
+  })
+  if (!data.value || (data.value.draft && !showDrafts)) {
     throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
   }
-  return data as Ref<PageCollections[C]>
+  // Snapshot: Nuxt clears async data when the page is left, but the old page is
+  // still rendered during the out-in transition and must keep its entry.
+  return shallowRef(data.value) as Readonly<Ref<FeedEntry>>
 }
 
 export function formatDate(date: string) {

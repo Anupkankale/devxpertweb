@@ -3,11 +3,11 @@ import type { Component } from 'vue'
 import type { SectionName } from '~/app.config'
 import {
   SectionsAboutSection,
-  SectionsBlogSection,
   SectionsContactSection,
   SectionsFaqSection,
   SectionsGivingSection,
   SectionsHeroSection,
+  SectionsInsightsSection,
   SectionsProjectsSection,
   SectionsStackSection,
   SectionsTrackerSection,
@@ -18,10 +18,10 @@ import {
 const registry: Record<SectionName, { component: Component, props?: Record<string, unknown> }> = {
   hero: { component: SectionsHeroSection },
   giving: { component: SectionsGivingSection },
-  stack: { component: SectionsStackSection, props: { more: { label: 'Explore services', to: '/about/what-we-do' } } },
-  projects: { component: SectionsProjectsSection, props: { more: { label: 'All insights', to: '/about/insights' } } },
-  blog: { component: SectionsBlogSection },
-  why: { component: SectionsWhySection, props: { more: { label: 'Our story', to: '/about/who-we-are' } } },
+  stack: { component: SectionsStackSection, props: { more: { label: 'Explore services', to: '/what-we-do' } } },
+  projects: { component: SectionsProjectsSection, props: { more: { label: 'Read our thinking', to: '/what-we-think' } } },
+  insights: { component: SectionsInsightsSection },
+  why: { component: SectionsWhySection, props: { more: { label: 'Our story', to: '/who-we-are' } } },
   about: { component: SectionsAboutSection },
   faq: { component: SectionsFaqSection },
   contact: { component: SectionsContactSection },

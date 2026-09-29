@@ -3,11 +3,9 @@ import { queryCollection } from '@nuxt/content/server'
 /** Static pages; long-form entries are added from their collections. */
 const STATIC_PAGES = [
   { path: '/', priority: '1.0', changefreq: 'monthly' },
-  { path: '/about', priority: '0.8', changefreq: 'monthly' },
-  { path: '/about/what-we-do', priority: '0.9', changefreq: 'monthly' },
-  { path: '/about/who-we-are', priority: '0.8', changefreq: 'monthly' },
-  { path: '/about/insights', priority: '0.8', changefreq: 'weekly' },
-  { path: '/blog', priority: '0.8', changefreq: 'weekly' },
+  { path: '/what-we-do', priority: '0.9', changefreq: 'monthly' },
+  { path: '/who-we-are', priority: '0.8', changefreq: 'monthly' },
+  { path: '/what-we-think', priority: '0.8', changefreq: 'weekly' },
   { path: '/contact', priority: '0.7', changefreq: 'yearly' },
 ]
 
